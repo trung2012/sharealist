@@ -1,0 +1,102 @@
+.custom-button {
+  height: 3.8rem;
+  min-width: 18rem;
+  width: 80%;
+  background: #002333;
+  color: #fff;
+  box-shadow: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border: .05rem solid #fff;
+  margin-bottom: 1.2rem;
+  opacity: .9;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    color: #002333;
+    background: #fff;
+    border: .05rem solid #002333;
+  }
+}
+
+.added-to-cart {
+  font-weight: 600;
+  background: #fff;
+  color: #002333;
+  border: .1rem solid #002333;
+
+  &:hover {
+    color: #002333;
+    background: #fff;
+    border: .1rem solid #002333;
+  }
+}
+
+.go-to-home {
+  font-weight: 600;
+  font-size: 1.2rem;
+  width: 7rem;
+  color: #fff;
+  background: #ff5c5c;
+  border: .1rem solid #fff;
+  margin-top: 3rem;
+
+  &:hover {
+    background: #fff;
+    color: #ff5c5c;
+    border: .1rem solid #ff7171;    
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-button {
+  height: 2.5rem;
+  min-width: 9rem;
+  width: 100%;
+  background: #002333;
+  color: #fff;
+  font-size: .8rem;
+
+  &:hover {
+    color: #fff;
+    background: #002333;
+    border: #002333;
+    outline: 0;
+  }
+}
+
+.added-to-cart {
+  font-weight: 600;
+  background: #002333;
+  color: #fff;
+  border: .1rem solid #002333;
+
+  &:hover {
+    color: unset;
+    background: unset;
+    border: unset;
+    outline: 0;
+  }
+}
+
+.go-to-home {
+  font-weight: 600;
+  font-size: .8rem;
+  width: 7rem;
+  color: #fff;
+  background: #ff5c5c;
+  border: .1rem solid #fff;
+  margin-top: 3rem;
+
+  &:hover {
+    background: #ff5c5c;
+    color: #fff;
+    border: .1rem solid #fff;
+    outline: 0;  
+  }
+}
+}

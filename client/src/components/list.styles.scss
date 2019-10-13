@@ -1,0 +1,14 @@
+.list-display-item {
+  display: flex;
+  justify-content: space-between;
+  border: .1rem solid rgb(39, 39, 39);
+  padding: 2rem 2rem;
+}
+
+.list-name {
+  margin-left: 2rem;
+}
+
+.list-icon {
+  margin: 0 .8rem;
+}

@@ -1,0 +1,132 @@
+.sign-in-page {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+  
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    width: 27%;
+    align-items: center;
+    padding: 3rem 0;
+    border: .1rem solid #00283a;
+    box-shadow: 1rem 1rem 2rem #c5c5c5;
+
+    .sign-in-form {
+      width: 70%;
+    }
+
+    .sign-in-title {
+      align-self: center;
+      margin-bottom: 6rem;
+      color: #00283a;
+    }
+
+    .buttons-container {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    .custom-button {
+      width: 20rem;
+    }
+
+    span {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    .register-link {
+      color: #00283a;
+      font-size: 2rem;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        opacity: .7;
+      }
+    }
+
+    .more-options {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .sign-in-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      width: 35%;
+      align-items: center;
+      padding: 2rem 1rem;
+    
+      .sign-in-title {
+        align-self: center;
+        margin-bottom: 6rem;
+        color: #00283a;
+      }
+  
+      .buttons-container {
+        text-align: center;
+        margin: 1.5rem 0;
+      }
+  
+      .custom-button {
+        height: 4rem;
+        width: 20rem;
+        font-size: 1.3rem;
+      }  
+    }
+  } 
+}
+
+@media only screen and (max-width:900px) {
+  .sign-in-page {
+    .content-container {
+      width: 50%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .sign-in-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      padding: 2rem 1rem;
+      border: unset;
+      box-shadow: unset;
+
+
+      .sign-in-title {
+        align-self: center;
+        margin-bottom: 6rem;
+        color: #00283a;
+      }
+  
+      .buttons-container {
+        text-align: center;
+        margin: 1.5rem 0;
+      }
+  
+      .custom-button {
+        height: 4rem;
+        width: 20rem;
+        font-size: 1.3rem;
+      }  
+    }
+  } 
+}
