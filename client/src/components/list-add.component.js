@@ -40,7 +40,7 @@ const ListAdd = ({ setIsAdding, history }) => {
             <span className='list-icon add-new-list' onClick={handleSubmit}>
               <i className="fas fa-plus"></i>
             </span>
-            <span className='close-adding' onClick={() => setIsAdding(false)}>
+            <span className='list-icon close-adding' onClick={() => setIsAdding(false)}>
               <i className="fas fa-window-close"></i>
             </span>
           </div>

@@ -1,23 +1,26 @@
 .list-item {
   display: flex;
   justify-content: space-between;
-  border-top: .1rem solid rgb(39, 39, 39);
-  border-left: .1rem solid rgb(39, 39, 39);
-  border-right: .1rem solid rgb(39, 39, 39);
-  border-radius: .3rem;
-  padding: 2rem 2rem;
-  width: 100%;
+  padding: 1rem 1rem;
+  margin: 0 .5rem;
+  border-bottom: .05rem solid gray;
+  cursor: pointer;
 
-  &:last-child {
-    border-bottom: .1rem solid rgb(39, 39, 39);
+  &:first-child {
+    border-top: .05rem solid gray;
   }
 }
 
 .list-item-name {
   font-weight: bold;
-  font-size: 120%;
+  font-size: 110%;
   color: black;
   text-transform: capitalize;
+  margin-bottom: .3rem;
+}
+
+.list-item-note {
+  font-size: 85%;
 }
 
 .list-item-icon-container {
@@ -33,4 +36,49 @@
 
 .delete-item {
   color: rgb(255, 92, 92);
+}
+
+.completed {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: .2rem;
+    background: rgb(219, 98, 98);
+    animation-name: cross;
+    animation-duration: .1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards; 
+  }
+}
+
+@keyframes cross {
+  0%   { width : 0; }
+  100% { width: 100%; }
+}
+  
+
+@media screen and (min-width: 900px) {
+  .list-item {
+    &:first-child {
+      border-top: none;
+    }
+
+    &:last-child {
+      border: none;
+    }
+  }
+  
+  .list-item-name {
+    font-size: 130%;
+    margin-bottom: .7rem;
+  }
+
+  .list-item-note {
+    font-size: 100%;
+  }  
 }

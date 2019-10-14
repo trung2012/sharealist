@@ -69,9 +69,9 @@ router.post('/items', async (req, res) => {
 
 router.get('/items', async (req, res) => {
   try {
-    const items = await Item.find({ list: req.query.list.toString() });
     const list = await List.findById(req.query.list.toString());
-    res.status(200).send({ items, listName: list.name });
+    await list.populate('items').execPopulate();
+    res.status(200).send({ listName: list.name, items: list.items });
   } catch (err) {
     res.status(500).send('Something went wrong with our server. Please try again after some time')
   }

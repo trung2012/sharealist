@@ -39,7 +39,7 @@ const ListEdit = ({ setIsEditing, _id, name }) => {
             <span className='list-icon edit-list' onClick={handleSubmit}>
               <i className="fas fa-check"></i>
             </span>
-            <span className='close-adding' onClick={() => setIsEditing(false)}>
+            <span className='list-icon close-adding' onClick={() => setIsEditing(false)}>
               <i className="fas fa-window-close"></i>
             </span>
           </div>

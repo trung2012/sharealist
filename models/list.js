@@ -17,8 +17,8 @@ listSchema.virtual('items', {
   foreignField: 'list'
 })
 
-// listSchema.set('toObject', { virtuals: true });
-// listSchema.set('toJSON', { virtuals: true });
+listSchema.set('toObject', { virtuals: true });
+listSchema.set('toJSON', { virtuals: true });
 
 const List = mongoose.model('List', listSchema);
 

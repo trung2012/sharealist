@@ -20,8 +20,7 @@ const itemSchema = new mongoose.Schema({
   },
   list: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'List'
+    required: true
   }
 })
 

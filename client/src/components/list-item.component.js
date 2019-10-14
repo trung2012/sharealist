@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './list-item.styles.scss';
 
-const ListItem = ({ item, handleDelete }) => {
+const ListItem = ({ item, handleDelete, setIsEditing, setItemToEdit, socket }) => {
   const { _id, name, quantity, note, completed } = item;
-  const [isEditing, setIsEditing] = useState(false);
-
   const completedClass = completed ? 'list-item-name completed' : 'list-item-name';
+
+  const onEditClick = () => {
+    setItemToEdit(item);
+    setIsEditing(true);
+  }
+
+  const onItemClick = () => {
+    socket.emit('set_completed', _id);
+  }
 
   return (
     <div className='list-item'>
-      <div className='list-item-content'>
+      <div className='list-item-content' onClick={onItemClick}>
         <div className={`${completedClass}`}>
-          {name}
+          <span className='list-item-content-name'>{name}</span>
           {
             quantity && <span className='list-item-quantity'>{`(${quantity})`}</span>
           }
@@ -22,7 +29,7 @@ const ListItem = ({ item, handleDelete }) => {
         }
       </div>
       <div className='list-item-icon-container'>
-        <span className='list-icon edit-item' title='Change Name' onClick={() => setIsEditing(true)}>
+        <span className='list-icon edit-item' title='Edit' onClick={onEditClick}>
           <i className='fas fa-pen'></i>
         </span>
         <span className='list-icon delete-item' title='Delete' onClick={() => handleDelete(_id)}>

@@ -1,0 +1,17 @@
+.list-item-change-form {
+  margin-top: 3rem;
+  padding: 0 2rem;
+}
+
+.custom-button {
+  width: 20%;
+  margin: 0 1rem;
+}
+
+@media screen and (min-width: 900px) {
+  .list-item-change-form {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

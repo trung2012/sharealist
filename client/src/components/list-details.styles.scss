@@ -1,5 +1,30 @@
 .list-details {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  .custom-button {
+    display: block;
+    width: 25%;
+    margin: 1rem auto 4rem;
+  }
+}
+
+.list-details-title {
+  margin: auto;
+}
+
+@media screen and (min-width: 900px) {
+  .list-details {
+    .add-item {
+      width: 13%;
+    }
+  }
+
+  .list-details-item-container { 
+    border: .05rem solid gray;  
+    border-radius: .4rem;
+    box-shadow: .6rem .6rem .8rem rgb(155, 155, 155);
+    width: 45%;
+    align-self: center;
+  }
 }

@@ -1,50 +1,91 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import socketioClient from 'socket.io-client';
+import socket from '../utils/socket';
+
 import ListItem from './list-item.component';
 import CustomButton from './custom-button.component';
+import ListItemAdd from './list-item-add.component';
+import ListItemEdit from './list-item-edit.component';
+import ErrorDisplay from './error-display.component';
 
 import './list-details.styles.scss';
 
 const ListDetails = ({ match }) => {
-  const [listItems, setListItems] = useState([]);
-  const [listName, setListName] = useState('');
-  const [isAdding, setIsAdding] = useState('false');
+  console.log('render')
+  const [list, setList] = useState({ name: '', items: [] });
+  const [isAdding, setIsAdding] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [itemToEdit, setItemToEdit] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const fetchData = () => {
+    socket.emit('initial_data', match.params.listId);
+  }
+
+  socket.on('hello', ({ message }) => {
+    console.log(message)
+  })
+
+  socket.on('get_data', ({ list }) => {
+    setList(list);
+  })
+
+  socket.on('error', ({ message }) => {
+    setErrorMessage(message);
+  })
 
   useEffect(() => {
-    (async () => {
-      const res = await axios({
-        method: 'get',
-        url: '/api/lists/items',
-        params: {
-          list: match.params.listId
-        }
-      });
+    fetchData();
+    socket.on('data_changed', fetchData);
+    // eslint-disable-next-line 
+  }, [])
 
-      setListName(res.data.listName);
-      setListItems(res.data.items);
+  const handleAdd = ({ itemContent }) => {
+    if (itemContent.itemName) {
+      const { itemName, quantity, note } = itemContent;
+      socket.emit('add_item', { listId: list._id, item: { name: itemName, quantity, note } });
 
-      const socket = socketioClient();
-      socket.on('hello', ({ message }) => {
-        console.log(message)
-      })
-    })();
-  }, [match.params.listId])
+      setIsAdding(false);
+    }
+  }
+
+  const handleEdit = ({ itemContent, _id }) => {
+    if (itemContent.itemName && _id) {
+      const { itemName, quantity, note } = itemContent;
+      socket.emit('edit_item', { name: itemName, quantity, note, _id });
+
+      setIsEditing(false);
+      setItemToEdit(null);
+    }
+  }
 
   const handleDelete = _id => {
-    setListItems(listItems.filter(item => item._id !== _id));
+    socket.emit('delete_item', _id);
   }
 
   return (
-    <div className='list-details'>
-      <h1 className='list-details-title'>{listName}</h1>
-      <CustomButton buttonType='add-item' text='Add Item' onClick={() => setIsAdding(true)} />
-      {
-        listItems.map(item => {
-          return <ListItem key={item._id} handleDelete={handleDelete} item={item} />
-        })
-      }
-    </div>
+    isAdding ? <ListItemAdd handleSubmit={handleAdd} setIsAdding={setIsAdding} /> :
+      isEditing ? <ListItemEdit handleSubmit={handleEdit} setIsEditing={setIsEditing} currentItem={itemToEdit} /> :
+        <div className='list-details'>
+          <h1 className='list-details-title'>{list.name}</h1>
+          {
+            errorMessage && <ErrorDisplay text={errorMessage} />
+          }
+          <CustomButton buttonType='add-item' text='Add Item' onClick={() => setIsAdding(true)} />
+          <div className='list-details-item-container'>
+            {
+              list.items.map(item => {
+                return <ListItem
+                  key={item._id}
+                  handleDelete={handleDelete}
+                  item={item}
+                  setIsEditing={setIsEditing}
+                  setItemToEdit={setItemToEdit}
+                  socket={socket}
+                />
+              })
+            }
+          </div>
+        </div>
   );
 };
 

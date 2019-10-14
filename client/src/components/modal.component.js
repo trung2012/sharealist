@@ -18,8 +18,8 @@ const Modal = ({ modalConfirm, modalDismiss, modalTitle, modalText }) => {
           {modalText}
         </div>
         <div className='modal-buttons'>
-          <CustomButton text='Yes' onClick={modalConfirm} />
-          <CustomButton text='Cancel' onClick={modalDismiss} />
+          <CustomButton text='Yes' buttonType='modal-confirm' onClick={modalConfirm} />
+          <CustomButton text='Cancel' buttonType='modal-dismiss' onClick={modalDismiss} />
         </div>
       </div>
     </div>

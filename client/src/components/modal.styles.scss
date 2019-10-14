@@ -1,6 +1,9 @@
 .modal {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   width: 100%;
+  height: 25%;
   border: .1rem solid gray;
   box-shadow: .6rem .6rem .9rem gray;
   border-radius: .5rem;
@@ -8,6 +11,7 @@
   align-self: center;
   z-index: 1;
   background: #fff;
+  animation: popFromTop .3s ease-in-out;
 }
 
 .modal-title {
@@ -28,9 +32,11 @@
 
 .modal-content {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 2rem .5rem;
+  padding: 0 1rem;
 }
 
 .modal-text {
@@ -47,7 +53,17 @@
   }
 }
 
+.modal-confirm {
+  background-color: rgb(255, 86, 86);
+}
 
+.modal-close {
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+  }
+}
 
 @media screen and (min-width: 600px) {
   .modal {
@@ -70,5 +86,17 @@
 @media screen and (min-width: 1184px) {
   .modal {
     width: 30%;
+  }
+}
+
+@keyframes popFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

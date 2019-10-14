@@ -1,9 +1,14 @@
 .list-add-display-item {
   display: flex;
   justify-content: space-between;
-  border: .1rem solid rgb(39, 39, 39);
-  padding: 2rem 2rem;
+  border: .05rem solid gray;
+  padding: 1.5rem 1.5rem;
   z-index: 1;
+
+  .close-adding {
+    color: red;
+    margin: 0 .8rem;
+  }
 }
 
 .list-add-display-item__name {
@@ -23,16 +28,12 @@
 
 .list-add-input {
   border: none;
-  font-size: 100%;
+  font-size: 110%;
   padding-left: 2rem;
   max-width: 100%;
+  height: 100%;
   
   &:focus {
     outline: none;
   }
-}
-
-.close-adding {
-  color: red;
-  margin: 0 .8rem;
 }

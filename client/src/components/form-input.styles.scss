@@ -15,7 +15,7 @@
     padding-bottom: .5rem;
     padding-top: 1.2rem;
     width: 100%;
-    font-size: 1.6rem;
+    font-size: 110%;
     border: none;    
     border-bottom: .1rem solid black;
     margin-bottom: 4rem;
@@ -42,11 +42,5 @@
 
   .shrink {
     @include shrinkLabel();
-  }
-}
-
-@media only screen and (max-width: 960px) {
-  .form-input {    
-    font-size: 1.2rem;
   }
 }

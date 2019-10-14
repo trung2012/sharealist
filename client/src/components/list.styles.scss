@@ -1,14 +1,14 @@
 .list-display-item {
   display: flex;
   justify-content: space-between;
-  border-top: .1rem solid rgb(39, 39, 39);
-  border-left: .1rem solid rgb(39, 39, 39);
-  border-right: .1rem solid rgb(39, 39, 39);
+  border-top: .05rem solid gray;
+  border-left: .05rem solid gray;
+  border-right: .05rem solid gray;
   border-radius: .3rem;
-  padding: 2rem 2rem;
+  padding: 1.5rem 1.5rem;
 
   &:last-child {
-    border-bottom: .1rem solid rgb(39, 39, 39);
+    border-bottom: .05rem solid gray;
   }
 
   .delete-list {
@@ -16,9 +16,15 @@
   }
 }
 
+.list-display-item__name {
+  display: flex;
+  align-items: center;
+}
+
 .list-name {
   margin-left: 2rem;
   color: black;
+  font-size: 110%;
 }
 
 .list-icon {
