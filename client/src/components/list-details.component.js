@@ -7,13 +7,6 @@ import CustomButton from './custom-button.component';
 import './list-details.styles.scss';
 
 const ListDetails = ({ match }) => {
-  const socket = socketioClient('http://localhost:5000/', { transports: ['websocket'] });
-
-  socket.on('hello', ({ message }) => {
-    console.log('hello')
-  })
-
-
   const [listItems, setListItems] = useState([]);
   const [listName, setListName] = useState('');
   const [isAdding, setIsAdding] = useState('false');
@@ -30,6 +23,11 @@ const ListDetails = ({ match }) => {
 
       setListName(res.data.listName);
       setListItems(res.data.items);
+
+      const socket = socketioClient();
+      socket.on('hello', ({ message }) => {
+        console.log(message)
+      })
     })();
   }, [match.params.listId])
 

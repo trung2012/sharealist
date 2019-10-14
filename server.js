@@ -11,7 +11,12 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 io.on('connection', socket => {
-  socket.emit('hello', { message: 'Hello' })
+  socket.emit('hello', { message: 'Connected' })
+  console.log('User Connected')
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected')
+  })
 })
 
 app.use(cors());
