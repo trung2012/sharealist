@@ -1,5 +1,5 @@
 const express = require('express');
-const socketio = require('socket.io');
+const socketIo = require('socket.io');
 const http = require('http');
 const cors = require('cors');
 require('./db/mongoose');
@@ -8,7 +8,11 @@ const listRouter = require('./routers/api/list');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketIo(server);
+
+io.on('connection', socket => {
+  socket.emit('hello', { message: 'Hello' })
+})
 
 app.use(cors());
 app.use(express.json());

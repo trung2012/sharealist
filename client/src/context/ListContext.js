@@ -38,30 +38,76 @@ const getLists = dispatch => {
 
         dispatch({ type: 'get_lists', payload: response.data });
       } catch (err) {
-        dispatch({ type: 'add_error', payload: err })
+        dispatch({ type: 'add_error', payload: err.response.data })
       }
     }
   };
 };
 
 const addList = dispatch => {
-  return async (name) => {
-    const response = await axios.post('/api/lists/add', { name });
+  return async (name, callback) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const requestConfig = {
+          headers: {
+            Authorization: 'Bearer ' + token,
+            'Content-Type': 'application/json'
+          }
+        }
+        const response = await axios.post('/api/lists/add', { name }, requestConfig);
 
-    dispatch({ type: 'add_list', payload: response.data });
+        dispatch({ type: 'add_list', payload: response.data });
+        if (callback) {
+          callback(response.data._id);
+        }
+      } catch (err) {
+        dispatch({ type: 'add_error', payload: err.response.data })
+      }
+    }
   };
 };
 
 const deleteList = dispatch => {
-  return async (id) => {
-    await axios.delete(`/Lists/${id}`);
-    dispatch({ type: 'delete_list', payload: id })
+  return async (_id) => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      try {
+        const requestConfig = {
+          headers: {
+            Authorization: 'Bearer ' + token,
+            'Content-Type': 'application/json'
+          }
+        }
+
+        await axios.delete(`/api/lists/delete/${_id}`, requestConfig);
+        dispatch({ type: 'delete_list', payload: _id });
+      } catch (err) {
+        dispatch({ type: 'add_error', payload: err.response.data })
+      }
+    }
   }
 }
 
 const editList = dispatch => {
-  return async (id, title, content) => {
-    await axios.put(`/lists/${id}`, { title, content });
+  return async (_id, name) => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      try {
+        const requestConfig = {
+          headers: {
+            Authorization: 'Bearer ' + token,
+            'Content-Type': 'application/json'
+          }
+        }
+        const response = await axios.put('/api/lists/edit', { _id, name }, requestConfig);
+        dispatch({ type: 'edit_list', payload: response.data })
+      } catch (err) {
+        dispatch({ type: 'add_error', payload: err.response.data })
+      }
+    }
   }
 }
 

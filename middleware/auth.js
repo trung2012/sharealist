@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 

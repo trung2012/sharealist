@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Lists from './lists.component';
-import ListDetail from './list-details.component';
+import ListDetails from './list-details.component';
 
-const ListPage = () => {
+const ListPage = ({ match }) => {
   return (
     <>
-      <Route path='/' component={Lists} />
-      <Route path='/lists/:listId' component={ListDetail} />
+      <Route exact path={`${match.path}`} component={Lists} />
+      <Route path={`${match.path}/:listId`} component={ListDetails} />
     </>
   );
 };

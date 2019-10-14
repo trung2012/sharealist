@@ -1,14 +1,20 @@
 const express = require('express');
 const router = new express.Router();
 const auth = require('../../middleware/auth');
-const List = require('../../models/list');
+const List = require('../../models/List');
+const Item = require('../../models/Item');
 
 router.get('/', auth, async (req, res) => {
   try {
     const { user } = req;
     await user.populate({
-      path: 'lists'
-    }).execPopulate()
+      path: 'lists',
+      populate: {
+        path: 'items',
+        model: 'Item'
+      }
+    }).execPopulate();
+
     res.status(200).send(user.lists)
   } catch (err) {
     res.status(500).send()
@@ -27,16 +33,16 @@ router.post('/add', auth, async (req, res) => {
     res.status(201).send(newList);
 
   } catch (err) {
-    res.status(500).send('Internal Server Error. Please try again after some time')
+    res.status(500).send('Something went wrong with our server. Please try again after some time')
   }
 })
 
-router.delete('/delete', auth, async (req, res) => {
+router.delete('/delete/:listId', auth, async (req, res) => {
   try {
-    await List.findByIdAndDelete({ _id: req.body._id });
-    return res.status(200).send();
+    const list = await List.findByIdAndDelete(req.params.listId.toString());
+    return res.status(200).send(list);
   } catch (err) {
-    res.status(500).send('Internal Server Error. Please try again after some time')
+    res.status(500).send('Something went wrong with our server. Please try again after some time')
   }
 })
 
@@ -47,7 +53,27 @@ router.put('/edit', auth, async (req, res) => {
     await existingList.save();
     res.status(200).send(existingList);
   } catch (err) {
-    res.status(500).send('Internal Server Error. Please try again after some time')
+    res.status(500).send('Something went wrong with our server. Please try again after some time')
+  }
+})
+
+router.post('/items', async (req, res) => {
+  try {
+    const item = new Item(req.body);
+    await item.save();
+    res.status(201).send(item);
+  } catch (err) {
+    res.status(500).send('Something went wrong with our server. Please try again after some time')
+  }
+})
+
+router.get('/items', async (req, res) => {
+  try {
+    const items = await Item.find({ list: req.query.list.toString() });
+    const list = await List.findById(req.query.list.toString());
+    res.status(200).send({ items, listName: list.name });
+  } catch (err) {
+    res.status(500).send('Something went wrong with our server. Please try again after some time')
   }
 })
 
