@@ -1,20 +1,20 @@
 .list-item {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1rem;
+  padding: 1.5rem 1.5rem;
   margin: 0 .5rem;
-  border-bottom: .05rem solid gray;
+  border-bottom: .05rem solid #c5c5c5;
   cursor: pointer;
 
   &:first-child {
-    border-top: .05rem solid gray;
+    border-top: .05rem solid #c5c5c5;
   }
 }
 
 .list-item-name {
   font-weight: bold;
   font-size: 110%;
-  color: black;
+  color: #3a3a3a;
   text-transform: capitalize;
   margin-bottom: .3rem;
 }
@@ -32,6 +32,11 @@
   margin: 0 .8rem;
   color: #0569dbe5;
   font-size: 150%;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .8;
+  }
 }
 
 .delete-item {

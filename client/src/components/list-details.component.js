@@ -10,7 +10,6 @@ import ErrorDisplay from './error-display.component';
 import './list-details.styles.scss';
 
 const ListDetails = ({ match }) => {
-  console.log('render')
   const [list, setList] = useState({ name: '', items: [] });
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);

@@ -1,14 +1,12 @@
 .list-display-item {
   display: flex;
   justify-content: space-between;
-  border-top: .05rem solid gray;
-  border-left: .05rem solid gray;
-  border-right: .05rem solid gray;
+  border-top: .05rem solid #c0c0c0;
   border-radius: .3rem;
   padding: 1.5rem 1.5rem;
 
   &:last-child {
-    border-bottom: .05rem solid gray;
+    border-bottom: .05rem solid #c0c0c0;
   }
 
   .delete-list {
@@ -23,11 +21,14 @@
 
 .list-name {
   margin-left: 2rem;
-  color: black;
+  color: rgb(49, 49, 49);
   font-size: 110%;
 }
 
-.list-icon {
-  margin: 0 .8rem;
-  color: #0569dbe5;
+@media screen and (min-width: 900px) {
+  .list-display-item {
+    border-left: .05rem solid #c0c0c0;
+    border-right: .05rem solid #c0c0c0;
+  }
 }
+
