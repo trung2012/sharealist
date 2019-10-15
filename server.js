@@ -20,7 +20,6 @@ app.use('/api/lists', listRouter);
 const io = socketIo(server);
 
 io.on('connection', socket => {
-  socket.emit('hello', { message: 'Connected' })
   console.log('User Connected')
 
   socket.on('initial_data', async (listId) => {
@@ -28,7 +27,7 @@ io.on('connection', socket => {
       const existingList = await List.findById(listId.toString());
       await existingList.populate('items').execPopulate();
 
-      io.sockets.emit('get_data', { list: existingList })
+      socket.emit('get_data', { list: existingList })
 
     } catch (err) {
       socket.emit('error', { message: 'Something went wrong with our server' });

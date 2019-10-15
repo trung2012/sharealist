@@ -20,21 +20,16 @@ const ListDetails = ({ match }) => {
     socket.emit('initial_data', match.params.listId);
   }
 
-  socket.on('hello', ({ message }) => {
-    console.log(message)
-  })
-
-  socket.on('get_data', ({ list }) => {
-    setList(list);
-  })
-
-  socket.on('error', ({ message }) => {
-    setErrorMessage(message);
-  })
-
   useEffect(() => {
     fetchData();
     socket.on('data_changed', fetchData);
+    socket.on('get_data', ({ list }) => {
+      setList(list);
+    })
+
+    socket.on('error', ({ message }) => {
+      setErrorMessage(message);
+    })
     // eslint-disable-next-line 
   }, [])
 
