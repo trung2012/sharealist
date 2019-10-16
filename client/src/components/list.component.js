@@ -1,27 +1,61 @@
 import React, { useState, useContext } from 'react';
+import { Context } from '../context/ListContext';
 import { Link } from 'react-router-dom';
 import Modal from './modal.component';
+import ListEdit from './list-edit.component';
 
 import './list.styles.scss';
-import { Context } from '../context/ListContext';
-import ListEdit from './list-edit.component';
 
 const List = ({ _id, name }) => {
   const { deleteList } = useContext(Context)
-  const [showModal, setShowModal] = useState(false);
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [shareModalInput, setShareModalInput] = useState('');
   const [isEditing, setIsEditing] = useState(false);
+
+  const handleListShare = () => {
+
+  };
 
   return (
     <>
       {
-        showModal
+        showDeleteModal
         &&
         <Modal
           modalTitle='Delete List'
-          modalText='Are you sure you want to delete this list? This cannot be undone'
           modalConfirm={() => deleteList(_id)}
-          modalDismiss={() => setShowModal(false)}
-        />
+          modalDismiss={() => setShowDeleteModal(false)}
+          confirmText='Delete'
+        >
+          <div className='modal-text'>
+            Are you sure you want to delete this list? This cannot be undone
+          </div>
+        </Modal>
+      }
+      {
+        showShareModal
+        &&
+        <Modal
+          modalTitle='Share List'
+          modalConfirm={handleListShare}
+          modalDismiss={() => setShowShareModal(false)}
+          confirmText='Share'
+        >
+          <div className='modal-text'>
+            Please enter the emails you want to share this list with (separated by semi-colons)
+          </div>
+          <input
+            className='share-modal-input'
+            name='share'
+            type='text'
+            label='Emails'
+            value={shareModalInput}
+            onChange={e => setShareModalInput(e.target.value)}
+            required
+          />
+        </Modal>
       }
 
       {
@@ -40,10 +74,10 @@ const List = ({ _id, name }) => {
               <span className='list-icon edit-list' title='Change Name' onClick={() => setIsEditing(true)}>
                 <i className='fas fa-pen'></i>
               </span>
-              <span className='list-icon delete-list' title='Delete' onClick={() => setShowModal(true)}>
+              <span className='list-icon delete-list' title='Delete' onClick={() => setShowDeleteModal(true)}>
                 <i className="fas fa-trash-alt"></i>
               </span>
-              <span className='list-icon share-list' title='Share'>
+              <span className='list-icon share-list' title='Share' onClick={() => setShowShareModal(true)}>
                 <i className="fas fa-share"></i>
               </span>
             </div>

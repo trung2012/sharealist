@@ -26,6 +26,20 @@
   font-size: 110%;
 }
 
+.share-modal-input {
+  border: none;
+  border-bottom: .1rem solid black;
+  font-size: 100%;
+  width: 90%;
+  align-self: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0 .5rem .5rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 @media screen and (min-width: 900px) {
   .list-display-item {
     border-left: .05rem solid #c0c0c0;

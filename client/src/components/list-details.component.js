@@ -10,6 +10,7 @@ import ErrorDisplay from './error-display.component';
 import './list-details.styles.scss';
 
 const ListDetails = ({ match }) => {
+  console.log('render')
   const [list, setList] = useState({ name: '', items: [] });
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -26,10 +27,15 @@ const ListDetails = ({ match }) => {
     socket.on('get_data', ({ list }) => {
       setList(list);
     })
-
-    socket.on('error', ({ message }) => {
+    socket.on('new error', ({ message }) => {
       setErrorMessage(message);
     })
+
+    return () => {
+      socket.off('data_changed');
+      socket.off('get_data');
+      socket.off('new error');
+    }
     // eslint-disable-next-line 
   }, [])
 

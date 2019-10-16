@@ -57,11 +57,14 @@ const signUp = dispatch => async ({ displayName, email, password }) => {
   }
 };
 
-const signIn = dispatch => async ({ email, password }) => {
+const signIn = dispatch => async ({ email, password }, callback) => {
   try {
     const response = await axios.post('/api/users/login', { email, password });
     localStorage.setItem('token', response.data.token);
     dispatch({ type: 'signin', payload: { token: response.data.token, user: response.data.user } });
+    if (callback) {
+      callback();
+    }
   } catch (err) {
     dispatch({
       type: 'add_error',
@@ -70,9 +73,12 @@ const signIn = dispatch => async ({ email, password }) => {
   }
 };
 
-const signOut = dispatch => async () => {
+const signOut = dispatch => async (callback) => {
   localStorage.removeItem('token');
   dispatch({ type: 'signout' });
+  if (callback) {
+    callback();
+  }
 };
 
 export const { Provider, Context } = createDataContext(

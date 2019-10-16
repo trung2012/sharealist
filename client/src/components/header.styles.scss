@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: #0569dbe5;
+  padding: 1rem 0;
+  margin-bottom: 4rem;
+}
+
+.header-logo-container {
+  display: flex;
+}
+
+.logo {
+  margin-left: 1.5rem;
+}
+
+.logo-text {
+  color: white;
+  font-size: 150%;
+  align-self: center;
+  margin-left: .5rem;
+}
+
+.navigation-items-container {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.navigation-item,
+.welcome-message {
+  color: #fff;
+  font-size: 120%;
+  margin: 0 1.2rem;
+  padding: 1rem 1rem;
+  border-radius: .4rem;
+}
+
+.navigation-item {
+  &:hover {
+    cursor: pointer;
+    background: #fff;
+    color: #0569dbe5;
+  }
+}

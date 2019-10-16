@@ -48,8 +48,9 @@ io.on('connection', socket => {
   socket.on('delete_item', async (_id) => {
     try {
       const deleted = await Item.findByIdAndDelete(_id);
-
-      io.sockets.emit('data_changed');
+      if (deleted) {
+        io.sockets.emit('data_changed');
+      }
     } catch (err) {
       socket.emit('error', { message: 'Something went wrong with our server' });
     }
@@ -58,11 +59,12 @@ io.on('connection', socket => {
   socket.on('edit_item', async ({ name, quantity, note, _id }) => {
     try {
       const updatedItem = await Item.findByIdAndUpdate(_id, { $set: { name, quantity, note } }, { new: true })
-
-      io.sockets.emit('data_changed');
+      if (updatedItem) {
+        io.sockets.emit('data_changed');
+      }
 
     } catch (err) {
-      socket.emit('error', { message: 'Something went wrong with our server' });
+      socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   })
 

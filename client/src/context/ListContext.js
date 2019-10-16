@@ -111,6 +111,10 @@ const editList = dispatch => {
   }
 }
 
+const shareList = dispatch => async (_id) => {
+
+}
+
 export const { Context, Provider } = createDataContext(
   listReducer,
   { addList, deleteList, editList, getLists },

@@ -3,7 +3,7 @@ import CustomButton from './custom-button.component';
 
 import './modal.styles.scss';
 
-const Modal = ({ modalConfirm, modalDismiss, modalTitle, modalText }) => {
+const Modal = ({ modalConfirm, modalDismiss, modalTitle, children, confirmText, dismissText }) => {
   return (
     <div className='modal'>
       <div className='overlay' onClick={modalDismiss}></div>
@@ -14,12 +14,10 @@ const Modal = ({ modalConfirm, modalDismiss, modalTitle, modalText }) => {
         </span>
       </div>
       <div className='modal-content'>
-        <div className='modal-text'>
-          {modalText}
-        </div>
+        {children}
         <div className='modal-buttons'>
-          <CustomButton text='Yes' buttonType='modal-confirm' onClick={modalConfirm} />
-          <CustomButton text='Cancel' buttonType='modal-dismiss' onClick={modalDismiss} />
+          <CustomButton text={confirmText || 'Yes'} buttonType='modal-confirm' onClick={modalConfirm} />
+          <CustomButton text={dismissText || 'Cancel'} buttonType='modal-dismiss' onClick={modalDismiss} />
         </div>
       </div>
     </div>

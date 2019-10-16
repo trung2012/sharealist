@@ -1,136 +1,69 @@
 .sign-up-page {
   display: flex;
   justify-content: center;
+  margin-top: 6rem;
+
+  .custom-button {
+    width: 50%;
+  }
+
+  span {
+    display: inline-block;
+    margin-right: 1rem;
+  }
 
   .content-container {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 100%;
     align-items: center;
     padding: 3rem 0;
+  }
+  
+  .sign-up-form {
+    width: 70%;
+    background: #fff;
+  }
+  
+  .sign-up-title {
+    align-self: center;
+    color: #0569dbe5;
     margin-bottom: 3rem;
-    border: .1rem solid #c5c5c5;
-    box-shadow: 1rem 1rem 2rem #c5c5c5;
-
-    .sign-up-form {
-      width: 70%;
+  }
+  
+  .buttons-container {
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+  
+  .register-link {
+    color: #0569dbe5;
+    font-size: 130%;
+    font-weight: 600;
+    cursor: pointer;      
+    margin-top: 1rem;
+  
+    &:hover {
+      opacity: .7;
     }
-
-    .sign-up-title {
-      font-size: 3rem;
-      align-self: center;
-      margin-bottom: 4rem;
-      margin-top: 1rem;
-      color: #0569dbe5;
-    }
-
-    .buttons-container {
-      text-align: center;
-      margin: 1.5rem 0;
-    }
-
-    .custom-button {
-      width: 20rem;
-    }
-
-    span {
-      display: inline-block;
-      margin-right: 1rem;
-    }
-
-    .register-link {
-      color: #0569dbe5;
-      font-size: 2rem;
-      font-weight: 600;
-      cursor: pointer;
-
-      &:hover {
-        opacity: .7;
-      }
-    }
-
-    .more-options {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+  }
+  
+  .more-options {
+    text-align: center;
+    margin-bottom: 1rem;
   }
 }
 
-@media only screen and (max-width:1280px) {
-  .sign-up-page {
-    display: flex;
-    justify-content: center;
-    margin-top: 4rem;
-    
-    .content-container {
-      display: flex;
-      flex-direction: column;
-      width: 38%;
-      align-items: center;
-      padding: 2rem 1rem;
 
 
-      .sign-up-title {
-        align-self: center;
-        margin-bottom: 2rem;
-        color: #0569dbe5;
-        font-size: 2.5rem;
-      }
-  
-      .buttons-container {
-        text-align: center;
-        margin: 1.5rem 0;
-      }
-  
-      .custom-button {
-        height: 4rem;
-        width: 20rem;
-        font-size: 1.3rem;
-      }  
-    }
-  } 
-}
 
-@media only screen and (max-width:900px) {
+@media screen and (min-width: 600px) {
   .sign-up-page {
     .content-container {
-      width: 45%;
+      width: 50rem;
+      border: .1rem solid #c5c5c5;
+      box-shadow: 1rem 1rem 2rem #c5c5c5;
+      border-radius: .3rem;
     }
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .sign-up-page {
-    display: flex;
-    justify-content: center;
-    margin-top: 4rem;
-    
-    .content-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      align-items: center;
-      padding: 2rem 1rem;
-      border: unset;
-      box-shadow: unset;
-  
-      .sign-up-title {
-        align-self: center;
-        margin-bottom: 2rem;
-        color: #0569dbe5;
-        font-size: 2.5rem;
-      }
-  
-      .buttons-container {
-        text-align: center;
-        margin: 1.5rem 0;
-      }
-  
-      .custom-button {
-        height: 4rem;
-        width: 20rem;
-        font-size: 1.3rem;
-      }  
-    }
-  } 
+  }  
 }

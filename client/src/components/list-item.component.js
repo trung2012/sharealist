@@ -21,7 +21,7 @@ const ListItem = ({ item, handleDelete, setIsEditing, setItemToEdit, socket }) =
         <div className={`${completedClass}`}>
           <span className='list-item-content-name'>{name}</span>
           {
-            quantity && <span className='list-item-quantity'>{`(${quantity})`}</span>
+            quantity && <span className='list-item-quantity'>{` (${quantity})`}</span>
           }
         </div>
         {
