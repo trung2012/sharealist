@@ -19,6 +19,23 @@
   margin: 0 auto;
 }
 
+@media screen and (min-width: 600px) {
+  .lists-page {
+    .add-item {
+      width: 15%;
+      margin-bottom: 3rem;
+      height: 4rem;
+    }
+  }
+
+  .lists-page-lists {
+    width: 70%;
+    box-shadow: .6rem .6rem .8rem #c0c0c0;
+    font-size: 100%;
+  } 
+}
+
+
 @media screen and (min-width: 900px) {
   .lists-page {
     .add-item {
@@ -29,7 +46,7 @@
   }
 
   .lists-page-lists {
-    width: 45%;
+    width: 55%;
     box-shadow: .6rem .6rem .8rem #c0c0c0;
     font-size: 100%;
   } 

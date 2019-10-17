@@ -42,6 +42,13 @@
   }
 }
 
+@media screen and (min-width: 600px) {
+  .list-display-item {
+    border-left: .05rem solid #c0c0c0;
+    border-right: .05rem solid #c0c0c0;
+  }
+}
+
 @media screen and (min-width: 900px) {
   .list-display-item {
     display: flex;
@@ -60,11 +67,6 @@
       color: rgb(255, 92, 92);
     }
   }
-
-  .list-display-item {
-    border-left: .05rem solid #c0c0c0;
-    border-right: .05rem solid #c0c0c0;
-  }
   
   .list-display-item__name {
     display: flex;
@@ -75,7 +77,7 @@
   .list-name {
     margin-left: 2rem;
     color: rgb(49, 49, 49);
-    font-size: 90%;
+    font-size: 130%;
   }
   
   .share-modal-input {
