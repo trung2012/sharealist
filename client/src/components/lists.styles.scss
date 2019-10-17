@@ -4,7 +4,8 @@
 
   .add-item {
     width: 30%;
-    margin-bottom: 3rem;
+    height: 3rem;
+    margin-bottom: 1.5rem;
     margin-left: auto;
     margin-right: auto;
   }
@@ -13,7 +14,7 @@
 .lists-page-lists {
   display: flex;
   flex-direction: column;
-  font-size: 110%;
+  font-size: 80%;
   width: 100%;
   margin: 0 auto;
 }
@@ -22,11 +23,14 @@
   .lists-page {
     .add-item {
       width: 12%;
+      margin-bottom: 3rem;
+      height: 4rem;
     }
   }
 
   .lists-page-lists {
     width: 45%;
     box-shadow: .6rem .6rem .8rem #c0c0c0;
+    font-size: 100%;
   } 
 }

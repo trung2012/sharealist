@@ -1,7 +1,6 @@
 .sign-in-page {
   display: flex;
   justify-content: center;
-  margin-top: 6rem;
 
   .custom-button {
     width: 50%;
@@ -19,7 +18,7 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
-  padding: 3rem 0;
+  padding: 1rem 0;
 }
 
 .sign-in-form {
@@ -57,10 +56,15 @@
 
 
 @media screen and (min-width: 600px) {
+
+  .sign-in-page {
+    margin-top: 6rem;
+  }
   .content-container {
     width: 45rem;
     border: .1rem solid #c5c5c5;
     box-shadow: 1rem 1rem 2rem #c5c5c5;
     border-radius: .3rem;
+    padding: 3rem 0;
   }
 }

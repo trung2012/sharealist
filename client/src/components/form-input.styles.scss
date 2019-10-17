@@ -12,13 +12,12 @@
 
   .form-input {
     padding-left: .5rem;
-    padding-bottom: .5rem;
     padding-top: 1.2rem;
     width: 100%;
     font-size: 110%;
     border: none;    
     border-bottom: .1rem solid black;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 
     &:focus {
       outline: none;      
@@ -35,7 +34,7 @@
     top: .6rem;
     left: .1rem;
     color: rgb(160, 160, 160);
-    font-size: 1.8rem;
+    font-size: 100%;
     pointer-events: none;
     transition: all .3s ease;
   }
@@ -43,4 +42,15 @@
   .shrink {
     @include shrinkLabel();
   }
+}
+
+
+@media screen and (min-width: 600px) {
+  .form-input-component {
+  
+  .form-input {
+    margin-bottom: 4rem;    
+    padding-bottom: .5rem;
+  }
+}
 }

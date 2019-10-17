@@ -1,5 +1,5 @@
 .custom-button {
-  min-height: 4rem;
+  height: 3rem;
   background: #0569dbe5;
   color: #fff;
   text-transform: uppercase;
@@ -9,10 +9,17 @@
   &:focus {
     outline: 0;
   }
+}
 
-  &:hover {
-    color: #0569dbe5;
-    background: #fff;
-    border: .05rem solid #0569dbe5;
+
+@media screen and (min-width: 500px) {
+  .custom-button {
+    height: 4rem;
+    &:hover,
+    &:active {
+      color: #0569dbe5;
+      background: #fff;
+      border: .05rem solid #0569dbe5;
+    }
   }
 }

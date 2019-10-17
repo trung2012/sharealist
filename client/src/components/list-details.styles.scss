@@ -4,13 +4,14 @@
 
   .custom-button {
     display: block;
-    width: 25%;
-    margin: 1rem auto 4rem;
+    width: 30%;
+    margin: 1rem auto 2rem;
   }
 }
 
 .list-details-title {
   margin: auto;
+  font-size: 140%;
 }
 
 .blank-list-text {
@@ -18,11 +19,30 @@
   color: gray;
 }
 
+
+@media screen and (min-width: 600px) {
+  .list-details {
+    .add-item {
+      width: 25%;
+      margin: 1rem auto 4rem;
+    }
+  }
+
+  .list-details-title {
+    font-size: 200%;
+  }
+}  
+
 @media screen and (min-width: 900px) {
   .list-details {
     .add-item {
       width: 13%;
+      margin: 1rem auto 4rem;
     }
+  }
+
+  .list-details-title {
+    font-size: 200%;
   }
 
   .list-details-item-container { 

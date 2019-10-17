@@ -27,7 +27,9 @@ const SignIn = ({ history }) => {
     <div className='sign-in-page'>
       <div className='content-container'>
         <h1 className='sign-in-title'>Sign in</h1>
-        <ErrorDisplay text={state.errorMessage} />
+        {
+          state.errorMessage && <ErrorDisplay text={state.errorMessage} />
+        }
         <form className='sign-in-form' onSubmit={handleSubmit}>
           <FormInput
             name='email'

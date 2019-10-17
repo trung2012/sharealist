@@ -41,6 +41,7 @@ const List = ({ _id, name, history }) => {
         showShareModal
         &&
         <Modal
+          className='share'
           modalTitle='Share List'
           modalConfirm={handleListShare}
           modalDismiss={() => setShowShareModal(false)}

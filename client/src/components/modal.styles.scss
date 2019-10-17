@@ -3,7 +3,7 @@
   flex-direction: column;
   position: fixed;
   width: 100%;
-  height: 30%;
+  height: 40%;
   border: .1rem solid gray;
   box-shadow: .6rem .6rem .9rem gray;
   border-radius: .5rem;
@@ -35,7 +35,7 @@
   flex: 1;
   flex-direction: column;
   justify-content: space-around;
-  margin: 2rem .5rem;
+  margin: 2rem .5rem 1rem;
   padding: 0 1rem;
 }
 
@@ -74,18 +74,21 @@
 @media screen and (min-width: 600px) {
   .modal {
     width: 65%;
+    height: 40%;
   }
 }
 
 @media screen and (min-width: 750px) {
   .modal {
-    width: 60%;
+    width: 50%;
+    height: 35%;
   }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 900px) and (max-height: 600px) {
   .modal {
     width: 40%;
+    height: 45%;
   }
 }
 

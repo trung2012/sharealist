@@ -44,9 +44,11 @@ const SignUp = ({ history }) => {
     <div className='sign-up-page'>
       <div className='content-container'>
         <h1 className='sign-up-title'>Sign up with email</h1>
-        <ErrorDisplay text={errorMessage} />
         {
-          state.errorMessage ? <ErrorDisplay text={state.errorMessage} /> : null
+          errorMessage && <ErrorDisplay text={errorMessage} />
+        }
+        {
+          state.errorMessage && <ErrorDisplay text={state.errorMessage} />
         }
         <form className='sign-up-form' onSubmit={handleSubmit}>
           <FormInput

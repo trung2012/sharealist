@@ -1,7 +1,7 @@
 .list-item {
   display: flex;
   justify-content: space-between;
-  padding: 1.5rem 1.5rem;
+  padding: 1rem 1rem;
   margin: 0 .5rem;
   border-bottom: .05rem solid #c5c5c5;
   
@@ -19,14 +19,14 @@
 .list-item-name {
   display: inline-block;
   font-weight: bold;
-  font-size: 110%;
+  font-size: 90%;
   color: #3a3a3a;
   text-transform: capitalize;
   margin-bottom: .3rem;
 }
 
 .list-item-note {
-  font-size: 85%;
+  font-size: 80%;
 }
 
 .list-item-icon-container {
@@ -36,14 +36,10 @@
 }
 
 .list-icon {
-  margin: 0 .8rem;
+  margin: 0 .5rem;
   color: #0569dbe5;
-  font-size: 150%;
+  font-size: 120%;
   cursor: pointer;
-
-  &:hover {
-    opacity: .8;
-  }
 }
 
 .delete-item {
@@ -78,6 +74,7 @@
   .list-item {
     &:first-child {
       border-top: none;
+      padding: 1.5rem 1.5rem;
     }
 
     &:last-child {
@@ -92,5 +89,14 @@
 
   .list-item-note {
     font-size: 100%;
-  }  
+  }
+
+  .list-icon {
+    margin: 0 .8rem;
+    font-size: 150%;
+  
+    &:hover {
+      opacity: .8;
+    }
+  }
 }
