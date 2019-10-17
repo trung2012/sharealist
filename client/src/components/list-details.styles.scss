@@ -4,7 +4,8 @@
 
   .custom-button {
     display: block;
-    width: 30%;
+    width: 35%;
+    height: 3.5rem;
     margin: 1rem auto 2rem;
   }
 }
@@ -17,12 +18,37 @@
 .blank-list-text {
   margin: auto;
   color: gray;
+  font-size: 140%;
 }
 
+.photos-header-title {
+  margin-top: 3rem;
+}
+
+.list-details-upload-photo {
+  text-align: center;
+  input[type=file] {
+    display: none;
+  }
+
+  input[type=file] + label {
+    display: inline-block;
+    color: #fff;
+    background-color: #0569dbe5;
+    padding: 1rem 1.5rem;
+    cursor: pointer;    
+    margin: 1rem auto;
+    border-radius: 2rem;
+  }
+}
+
+.image-upload-icon {
+  margin-right: .3rem;
+}
 
 @media screen and (min-width: 600px) {
   .list-details {
-    .add-item {
+    .custom-button {
       width: 25%;
       margin: 1rem auto 4rem;
     }
@@ -35,7 +61,7 @@
 
 @media screen and (min-width: 900px) {
   .list-details {
-    .add-item {
+    .custom-button {
       width: 13%;
       margin: 1rem auto 4rem;
     }

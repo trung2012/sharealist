@@ -21,7 +21,7 @@ app.use('/api/lists', listRouter);
 const io = socketIo(server);
 
 io.on('connection', socket => {
-  console.log('User Connected')
+  console.log('User Connected');
 
   socket.on('initial_data', async (listId) => {
     try {
@@ -33,7 +33,7 @@ io.on('connection', socket => {
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
-  })
+  });
 
   socket.on('add_item', async ({ listId, item }) => {
     try {
@@ -44,7 +44,7 @@ io.on('connection', socket => {
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
-  })
+  });
 
   socket.on('delete_item', async (_id) => {
     try {
@@ -55,7 +55,7 @@ io.on('connection', socket => {
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
-  })
+  });
 
   socket.on('edit_item', async ({ name, quantity, note, _id }) => {
     try {
@@ -67,7 +67,7 @@ io.on('connection', socket => {
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
-  })
+  });
 
   socket.on('set_completed', async _id => {
     try {
@@ -78,10 +78,10 @@ io.on('connection', socket => {
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
-  })
+  });
 
   socket.on('disconnect', () => {
-    console.log('User disconnected')
+    console.log('User disconnected');
   })
 })
 

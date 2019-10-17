@@ -19,6 +19,7 @@ a {
   text-decoration: none;
 }
 
-input, textarea {
+input {
   -webkit-appearance: none;
+  border-radius: 0;
 }

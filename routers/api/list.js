@@ -3,6 +3,8 @@ const router = new express.Router();
 const auth = require('../../middleware/auth');
 const List = require('../../models/List');
 const Item = require('../../models/Item');
+const Image = require('../../models/Image');
+const parser = require('../../middleware/cloudinary');
 const { sendSharedListEmail } = require('../../emails/account');
 
 router.get('/', auth, async (req, res) => {
@@ -86,6 +88,14 @@ router.get('/items', async (req, res) => {
     res.status(200).send({ listName: list.name, items: list.items });
   } catch (err) {
     res.status(500).send('Something went wrong with our server. Please try again after some time')
+  }
+})
+
+router.post('/images/upload', parser.single('image'), async (req, res) => {
+  try {
+    console.log(req.file)
+  } catch (err) {
+
   }
 })
 

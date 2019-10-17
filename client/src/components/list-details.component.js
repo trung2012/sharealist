@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import socket from '../utils/socket';
 
 import ListItem from './list-item.component';
@@ -61,6 +63,15 @@ const ListDetails = ({ match }) => {
     socket.emit('delete_item', _id);
   }
 
+  const handleImageUpload = async (event) => {
+    const files = event.target.files;
+    try {
+      await axios.post('/api/lists/images/upload', { listId: match.params.listId, file: files[0] });
+    } catch (err) {
+      setErrorMessage(err.response.data);
+    }
+  }
+
   return (
     isAdding ? <ListItemAdd handleSubmit={handleAdd} setIsAdding={setIsAdding} /> :
       isEditing ? <ListItemEdit handleSubmit={handleEdit} setIsEditing={setIsEditing} currentItem={itemToEdit} /> :
@@ -87,7 +98,19 @@ const ListDetails = ({ match }) => {
                 }
               </div>
           }
-        </div>
+          <h1 className='list-details-title photos-header-title'>Photos</h1>
+          <div className='list-details-photos'>
+            <div className='list-details-upload-photo'>
+              <input type='file' name='image' id='image' onChange={handleImageUpload} />
+              <label htmlFor='image'>
+                <span className='image-upload-icon'>
+                  <i className="fas fa-cloud-upload-alt"></i>
+                </span>
+                Add Photos
+              </label>
+            </div>
+          </div>
+        </div >
   );
 };
 

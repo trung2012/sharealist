@@ -1,9 +1,10 @@
 .custom-button {
-  height: 3rem;
+  height: 3.5rem;
   background: #0569dbe5;
   color: #fff;
   text-transform: uppercase;
   border: .05rem solid #fff;
+  border-radius: 5rem;
   cursor: pointer;
 
   &:focus {
