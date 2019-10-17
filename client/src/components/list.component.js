@@ -16,6 +16,7 @@ const List = ({ _id, name, history }) => {
 
   const handleListShare = () => {
     shareList({ emailAddress: shareModalInput, url: `${window.location.href}/${_id}` }, () => {
+      setShowShareModal(false);
       alert('Share successful!');
     });
   };
