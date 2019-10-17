@@ -41,7 +41,6 @@
 
 .modal-text {
   align-self: center;
-  padding-left: 3%;
 }
 
 .modal-buttons {
@@ -52,10 +51,16 @@
     font-size: 80%;
     width: 30%;
   }
-}
 
-.modal-confirm {
-  background-color: rgb(255, 86, 86);
+  .modal-confirm {
+    background-color: rgb(255, 86, 86);
+    
+    &:hover {
+      background-color: white;
+      color: rgb(255, 86, 86);
+      border: .1rem solid rgb(255, 86, 86);;
+    }
+  }
 }
 
 .modal-close {

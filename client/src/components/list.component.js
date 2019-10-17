@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../context/ListContext';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Modal from './modal.component';
 import ListEdit from './list-edit.component';
 
 import './list.styles.scss';
 
-const List = ({ _id, name }) => {
-  const { deleteList } = useContext(Context)
+const List = ({ _id, name, history }) => {
+  const { deleteList, shareList } = useContext(Context);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
@@ -15,7 +15,9 @@ const List = ({ _id, name }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleListShare = () => {
-
+    shareList({ emailAddress: shareModalInput, url: `${window.location.href}/${_id}` }, () => {
+      alert('Share successful!');
+    });
   };
 
   return (
@@ -44,7 +46,7 @@ const List = ({ _id, name }) => {
           confirmText='Share'
         >
           <div className='modal-text'>
-            Please enter the emails you want to share this list with (separated by semi-colons)
+            Please enter the emails you want to share this list with
           </div>
           <input
             className='share-modal-input'
@@ -62,15 +64,15 @@ const List = ({ _id, name }) => {
         isEditing ? <ListEdit setIsEditing={setIsEditing} _id={_id} name={name} />
           :
           <div className='list-display-item'>
-            <div className='list-display-item__name'>
+            <div className='list-display-item__name' onClick={() => history.push(`/lists/${_id}`)}>
               <span className='list-icon'>
                 <i className="far fa-list-alt"></i>
               </span>
-              <Link to={`/lists/${_id}`} className='list-name'>
+              <div className='list-name'>
                 {name}
-              </Link>
+              </div>
             </div>
-            <div>
+            <div className='icons-container'>
               <span className='list-icon edit-list' title='Change Name' onClick={() => setIsEditing(true)}>
                 <i className='fas fa-pen'></i>
               </span>
@@ -89,4 +91,4 @@ const List = ({ _id, name }) => {
   );
 };
 
-export default List;
+export default withRouter(List);

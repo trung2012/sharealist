@@ -16,7 +16,7 @@ const ListItem = ({ item, handleDelete, setIsEditing, setItemToEdit, socket }) =
   }
 
   return (
-    <div className='list-item'>
+    <div className='list-item' >
       <div className='list-item-content' onClick={onItemClick}>
         <div className={`${completedClass}`}>
           <span className='list-item-content-name'>{name}</span>

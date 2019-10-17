@@ -8,6 +8,7 @@
 
 .header-logo-container {
   display: flex;
+  align-items: center;
 }
 
 .logo {
@@ -17,8 +18,7 @@
 .logo-text {
   color: white;
   font-size: 150%;
-  align-self: center;
-  margin-left: .5rem;
+  margin-left: .6rem;
 }
 
 .navigation-items-container {

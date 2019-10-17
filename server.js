@@ -30,7 +30,7 @@ io.on('connection', socket => {
       socket.emit('get_data', { list: existingList })
 
     } catch (err) {
-      socket.emit('error', { message: 'Something went wrong with our server' });
+      socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   })
 
@@ -41,7 +41,7 @@ io.on('connection', socket => {
 
       io.sockets.emit('data_changed');
     } catch (err) {
-      socket.emit('error', { message: 'Something went wrong with our server' });
+      socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   })
 
@@ -52,7 +52,7 @@ io.on('connection', socket => {
         io.sockets.emit('data_changed');
       }
     } catch (err) {
-      socket.emit('error', { message: 'Something went wrong with our server' });
+      socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   })
 
@@ -75,7 +75,7 @@ io.on('connection', socket => {
       await item.save();
       io.sockets.emit('data_changed');
     } catch (err) {
-      socket.emit('error', { message: 'Something went wrong with our server' });
+      socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   })
 
@@ -83,6 +83,21 @@ io.on('connection', socket => {
     console.log('User disconnected')
   })
 })
+
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if ((req.get('X-Forwarded-Proto') !== 'https')) {
+      res.redirect('https://' + req.get('Host') + req.url);
+    } else
+      next();
+  });
+
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+  });
+};
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

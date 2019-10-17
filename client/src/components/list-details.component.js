@@ -10,7 +10,6 @@ import ErrorDisplay from './error-display.component';
 import './list-details.styles.scss';
 
 const ListDetails = ({ match }) => {
-  console.log('render')
   const [list, setList] = useState({ name: '', items: [] });
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -71,20 +70,23 @@ const ListDetails = ({ match }) => {
             errorMessage && <ErrorDisplay text={errorMessage} />
           }
           <CustomButton buttonType='add-item' text='Add Item' onClick={() => setIsAdding(true)} />
-          <div className='list-details-item-container'>
-            {
-              list.items.map(item => {
-                return <ListItem
-                  key={item._id}
-                  handleDelete={handleDelete}
-                  item={item}
-                  setIsEditing={setIsEditing}
-                  setItemToEdit={setItemToEdit}
-                  socket={socket}
-                />
-              })
-            }
-          </div>
+          {
+            list.items.length === 0 ? <h1 className='blank-list-text'>No Items</h1>
+              : <div className='list-details-item-container'>
+                {
+                  list.items.map(item => {
+                    return <ListItem
+                      key={item._id}
+                      handleDelete={handleDelete}
+                      item={item}
+                      setIsEditing={setIsEditing}
+                      setItemToEdit={setItemToEdit}
+                      socket={socket}
+                    />
+                  })
+                }
+              </div>
+          }
         </div>
   );
 };

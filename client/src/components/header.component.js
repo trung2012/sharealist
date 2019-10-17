@@ -22,7 +22,7 @@ const Header = ({ history }) => {
     <div className='header'>
       <div className='header-logo-container'>
         <img src={logo} alt='logo' className='logo' />
-        <span className='logo-text'>groshary</span>
+        <span className='logo-text'>ShareAList</span>
       </div>
       <div className='navigation-items-container'>
         {

@@ -12,7 +12,7 @@ const listReducer = (state, action) => {
     case 'edit_list':
       return {
         ...state, lists: state.lists.map(list => {
-          return list.id === action.payload._id ? action.payload : list;
+          return list._id === action.payload._id ? action.payload : list;
         })
       }
     case 'add_error':
@@ -91,7 +91,7 @@ const deleteList = dispatch => {
 }
 
 const editList = dispatch => {
-  return async (_id, name) => {
+  return async (_id, name, callback) => {
     const token = localStorage.getItem('token');
 
     if (token) {
@@ -103,7 +103,10 @@ const editList = dispatch => {
           }
         }
         const response = await axios.put('/api/lists/edit', { _id, name }, requestConfig);
-        dispatch({ type: 'edit_list', payload: response.data })
+        dispatch({ type: 'edit_list', payload: response.data });
+        if (callback) {
+          callback();
+        }
       } catch (err) {
         dispatch({ type: 'add_error', payload: err.response.data })
       }
@@ -111,13 +114,20 @@ const editList = dispatch => {
   }
 }
 
-const shareList = dispatch => async (_id) => {
-
+const shareList = dispatch => async ({ emailAddress, url }, callback) => {
+  try {
+    await axios.post('/api/lists/share', { emailAddress, url });
+    if (callback) {
+      callback();
+    }
+  } catch (err) {
+    dispatch({ type: 'add_error', payload: err.response.data });
+  }
 }
 
 export const { Context, Provider } = createDataContext(
   listReducer,
-  { addList, deleteList, editList, getLists },
+  { addList, deleteList, editList, getLists, shareList },
   {
     lists: [],
     errorMessage: null

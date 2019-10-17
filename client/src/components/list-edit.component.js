@@ -13,8 +13,9 @@ const ListEdit = ({ setIsEditing, _id, name }) => {
     if (!listName) {
       alert('Please enter list name');
     } else {
-      editList(_id, listName);
-      setIsEditing(false);
+      editList(_id, listName, () => {
+        setIsEditing(false);
+      });
     }
   }
 

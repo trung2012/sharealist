@@ -1,14 +1,23 @@
-const sgMail = require('@sendgrid/mail');
+const sendGrid = require('@sendgrid/mail');
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendSharedListEmail = (emails) => {
-  sgMail.send({
-    to: emails,
-    from: 'support@groshary.com',
-    subject: 'You have been invited to edit a list',
-    text: 'You have been invited to edit '
-  })
+const sendSharedListEmail = (emailAddress, url) => {
+  const email = {
+    to: emailAddress,
+    from: 'support@sharealist.com',
+    subject: 'Invitation on Sharealist',
+    templateId: 'd-931b1ca74f2e47978cbb7db56784d53d',
+    dynamic_template_data: {
+      url
+    }
+  };
+
+  sendGrid.send(email, (error, result) => {
+    if (error) {
+      console.log(error);
+    }
+  });
 };
 
 

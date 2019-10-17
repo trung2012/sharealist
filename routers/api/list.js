@@ -3,6 +3,7 @@ const router = new express.Router();
 const auth = require('../../middleware/auth');
 const List = require('../../models/List');
 const Item = require('../../models/Item');
+const { sendSharedListEmail } = require('../../emails/account');
 
 router.get('/', auth, async (req, res) => {
   try {
@@ -40,7 +41,7 @@ router.post('/add', auth, async (req, res) => {
 router.delete('/delete/:listId', auth, async (req, res) => {
   try {
     const list = await List.findByIdAndDelete(req.params.listId.toString());
-    return res.status(200).send(list);
+    res.status(200).send(list);
   } catch (err) {
     res.status(500).send('Something went wrong with our server. Please try again after some time')
   }
@@ -55,6 +56,17 @@ router.put('/edit', auth, async (req, res) => {
   } catch (err) {
     res.status(500).send('Something went wrong with our server. Please try again after some time')
   }
+})
+
+router.post('/share', (req, res) => {
+  try {
+    sendSharedListEmail(req.body.emailAddress, req.body.url);
+    res.status(200).send('Email sent');
+  } catch (err) {
+    console.log(err)
+    res.status(500).send('Internal Server Error');
+  }
+
 })
 
 router.post('/items', async (req, res) => {
