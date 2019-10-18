@@ -27,7 +27,8 @@ const ListDetails = ({ match }) => {
     socket.on('data_changed', fetchData);
     socket.on('get_data', ({ list }) => {
       setList(list);
-    })
+    });
+
     socket.on('new error', ({ message }) => {
       setErrorMessage(message);
     })
@@ -64,12 +65,30 @@ const ListDetails = ({ match }) => {
   }
 
   const handleImageUpload = async (event) => {
-    const files = event.target.files;
-    try {
-      await axios.post('/api/lists/images/upload', { listId: match.params.listId, file: files[0] });
-    } catch (err) {
-      setErrorMessage(err.response.data);
+    setErrorMessage(null);
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('image', file);
+      try {
+        await axios({
+          method: 'post',
+          url: `/api/lists/images/upload/${match.params.listId}`,
+          data: formData,
+          config: {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+        });
+      } catch (err) {
+        setErrorMessage('Something went wrong. Please reload and try again');
+      }
     }
+  }
+
+  const handleImageDelete = _id => {
+    socket.emit('delete_image', _id);
   }
 
   return (
@@ -99,7 +118,7 @@ const ListDetails = ({ match }) => {
               </div>
           }
           <h1 className='list-details-title photos-header-title'>Photos</h1>
-          <div className='list-details-photos'>
+          <div className='list-details-photos-container'>
             <div className='list-details-upload-photo'>
               <input type='file' name='image' id='image' onChange={handleImageUpload} />
               <label htmlFor='image'>
@@ -109,8 +128,27 @@ const ListDetails = ({ match }) => {
                 Add Photos
               </label>
             </div>
+            <div className='list-details-photos'>
+              {
+                list.images && list.images.map(image => {
+                  return (
+                    <div key={image._id} className='list-details-image-container'>
+                      {
+                        image.url &&
+                        <>
+                          <img src={image.url} alt='' className='list-image' onClick={() => window.open(image.url)} />
+                          <span className='delete-image' onClick={() => handleImageDelete(image._id)}>
+                            <i className="fas fa-times-circle"></i>
+                          </span>
+                        </>
+                      }
+                    </div>
+                  )
+                })
+              }
+            </div>
           </div>
-        </div >
+        </div>
   );
 };
 

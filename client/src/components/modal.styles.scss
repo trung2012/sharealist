@@ -53,12 +53,12 @@
   }
 
   .modal-confirm {
-    background-color: rgb(255, 86, 86);
+    background-color: #ff5656;
     
     &:hover {
       background-color: white;
-      color: rgb(255, 86, 86);
-      border: .1rem solid rgb(255, 86, 86);;
+      color: #ff5656;
+      border: .1rem solid #ff5656;
     }
   }
 }
