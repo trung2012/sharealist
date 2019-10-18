@@ -92,7 +92,7 @@ io.on('connection', socket => {
       await cloudinary.v2.uploader.destroy(image.public_id);
       await image.remove();
 
-      socket.emit('data_changed');
+      io.sockets.emit('data_changed');
 
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
