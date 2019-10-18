@@ -35,7 +35,7 @@ const loadUser = dispatch => async (callback) => {
         callback(response.data.user._id);
       }
     } catch (err) {
-      dispatch({ type: 'add_error', payload: err });
+      dispatch({ type: 'add_error', payload: err.response.data });
     }
   }
 }
@@ -52,7 +52,7 @@ const signUp = dispatch => async ({ displayName, email, password }) => {
   } catch (err) {
     dispatch({
       type: 'add_error',
-      payload: err
+      payload: err.response.data
     });
   }
 };
@@ -68,7 +68,7 @@ const signIn = dispatch => async ({ email, password }, callback) => {
   } catch (err) {
     dispatch({
       type: 'add_error',
-      payload: err
+      payload: err.response.data
     });
   }
 };
