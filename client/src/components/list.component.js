@@ -15,9 +15,12 @@ const List = ({ _id, name, history }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleListShare = () => {
+    if (shareModalInput.length === 0) {
+      alert('Please enter an email to share');
+    }
     shareList({ emailAddress: shareModalInput, url: `${window.location.href}/${_id}` }, () => {
       setShowShareModal(false);
-      alert('Share successful!');
+      alert('List shared successfully!');
     });
   };
 
