@@ -3,7 +3,7 @@
   flex-direction: column;
   position: fixed;
   width: 100%;
-  min-height: 30%;
+  min-height: 25%;
   border: .1rem solid gray;
   box-shadow: .6rem .6rem .9rem gray;
   border-radius: .5rem;
@@ -41,6 +41,7 @@
 
 .modal-text {
   align-self: center;
+  margin-bottom: 2rem;
 }
 
 .modal-buttons {
@@ -71,6 +72,11 @@
   }
 }
 
+@media screen and (min-width: 500px) {
+  .modal {
+    width: 80%;
+  }
+}
 
 @media screen and (min-width: 600px) {
   .modal {
