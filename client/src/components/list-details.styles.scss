@@ -51,7 +51,6 @@
 .list-details-photos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: stretch;
   margin: 0 auto;
   width: 90%;
 }
@@ -64,16 +63,16 @@
 }
 
 .list-image {
-  height: auto;
+  height: 100%;
   width: 100%;
-  transform: translate3d(0,0,0);
+  border: .1rem solid #c5c5c5;
 }
 
 .delete-image {
   position: absolute;
-  top: -10%;
-  right: -6%;
-  font-size: 120%;
+  top: -5%;
+  right: -5%;
+  font-size: 110%;
   background-color: white;
   color: red;
   border-radius: 50%;
@@ -97,6 +96,12 @@
 
   .list-details-title {
     font-size: 200%;
+  }
+
+  .delete-image {
+    top: -3%;
+    right: -3%;
+    font-size: 130%;
   }
 }  
 
@@ -139,5 +144,19 @@
     background-color: white;
     color: red;
     border-radius: 50%;
+  }
+
+  .list-details-upload-photo {
+    input[type=file] + label {
+      &:hover {
+        color: #0569dbe5;
+        background-color: #fff;
+        border: .1rem solid #0569dbe5;
+      }
+    }
+  }
+
+  .list-image {
+    height: 75%;
   }
 }
