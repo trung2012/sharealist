@@ -32,7 +32,7 @@ const loadUser = dispatch => async (callback) => {
       const response = await axios.get('/api/users', requestConfig);
       dispatch({ type: 'load_user', payload: { token, user: response.data.user } });
       if (callback) {
-        callback(response.data.user._id);
+        callback();
       }
     } catch (err) {
       dispatch({ type: 'add_error', payload: err.response.data });

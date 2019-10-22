@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { Context } from '../context/AuthContext';
 
@@ -6,13 +6,8 @@ import logo from '../assets/logo.png';
 import './header.styles.scss';
 
 const Header = ({ history }) => {
-  const { state, loadUser, signOut } = useContext(Context);
+  const { state, signOut } = useContext(Context);
   const { user } = state;
-
-  useEffect(() => {
-    loadUser(() => history.push('/lists'));
-    // eslint-disable-next-line
-  }, [])
 
   const handleSignOut = () => {
     signOut(() => history.push('/'));
@@ -20,7 +15,7 @@ const Header = ({ history }) => {
 
   return (
     <div className='header'>
-      <div className='header-logo-container'>
+      <div className='header-logo-container' onClick={() => history.push('/')}>
         <img src={logo} alt='logo' className='logo' />
         <span className='logo-text'>ShareAList</span>
       </div>

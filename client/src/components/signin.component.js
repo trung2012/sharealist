@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../context/AuthContext';
 
 import FormInput from './form-input.component';
@@ -8,10 +8,15 @@ import ErrorDisplay from './error-display.component';
 import './signin.styles.scss';
 
 const SignIn = ({ history }) => {
-  const { state, signIn, clearErrorMessage } = useContext(Context);
+  const { state, loadUser, signIn, clearErrorMessage } = useContext(Context);
 
   const [userCredentials, setUserCredentials] = useState({ email: '', password: '' })
   const { email, password } = userCredentials;
+
+  useEffect(() => {
+    loadUser(() => history.push('/lists'));
+    // eslint-disable-next-line
+  }, [])
 
   const handleChange = event => {
     const { value, name } = event.target;
