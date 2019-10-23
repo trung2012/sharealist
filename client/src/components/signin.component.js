@@ -1,5 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Context } from '../context/AuthContext';
+import { withRouter } from 'react-router-dom';
 
 import FormInput from './form-input.component';
 import CustomButton from './custom-button.component';
@@ -8,15 +9,12 @@ import ErrorDisplay from './error-display.component';
 import './signin.styles.scss';
 
 const SignIn = ({ history }) => {
-  const { state, loadUser, signIn, clearErrorMessage } = useContext(Context);
+  const { state, signIn, clearErrorMessage } = useContext(Context);
 
   const [userCredentials, setUserCredentials] = useState({ email: '', password: '' })
   const { email, password } = userCredentials;
 
-  useEffect(() => {
-    loadUser(() => history.push('/lists'));
-    // eslint-disable-next-line
-  }, [])
+
 
   const handleChange = event => {
     const { value, name } = event.target;
@@ -67,4 +65,4 @@ const SignIn = ({ history }) => {
   );
 }
 
-export default SignIn;
+export default withRouter(SignIn);
