@@ -93,15 +93,16 @@ const returnRouter = (io) => {
     }
   })
 
-  router.post('/images/upload/:listId', parser.single('image'), async (req, res) => {
-    const newImage = new Image({
-      url: req.file.url,
-      public_id: req.file.public_id,
-      list: req.params.listId
-    });
-
+  router.post('/images/upload/:listId', parser.any('image'), async (req, res) => {
     try {
-      await newImage.save();
+      req.files.forEach(async file => {
+        const newImage = new Image({
+          url: file.url,
+          public_id: file.public_id,
+          list: req.params.listId
+        });
+        await newImage.save();
+      });
       io.sockets.emit('data_changed');
       res.send('Photo uploaded');
     } catch (err) {

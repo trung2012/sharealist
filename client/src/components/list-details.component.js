@@ -66,10 +66,14 @@ const ListDetails = ({ match }) => {
 
   const handleImageUpload = async (event) => {
     setErrorMessage(null);
-    const file = event.target.files[0];
-    if (file) {
+    const { files } = event.target;
+    if (files) {
       const formData = new FormData();
-      formData.append('image', file);
+      for (let file of files) {
+        formData.append('image', file);
+      }
+
+      console.log(formData)
       try {
         await axios({
           method: 'post',
@@ -120,7 +124,7 @@ const ListDetails = ({ match }) => {
           <h1 className='list-details-title photos-header-title'>Photos</h1>
           <div className='list-details-photos-container'>
             <div className='list-details-upload-photo'>
-              <input type='file' name='image' id='image' onChange={handleImageUpload} />
+              <input type='file' name='image' id='image' onChange={handleImageUpload} multiple />
               <label htmlFor='image'>
                 <span className='image-upload-icon'>
                   <i className="fas fa-cloud-upload-alt"></i>
