@@ -38,6 +38,7 @@ const getLists = dispatch => {
 
         dispatch({ type: 'get_lists', payload: response.data });
       } catch (err) {
+        console.log(err)
         dispatch({ type: 'add_error', payload: err.response.data })
       }
     }
@@ -114,9 +115,9 @@ const editList = dispatch => {
   }
 }
 
-const shareList = dispatch => async ({ emailAddress, url }, callback) => {
+const shareList = dispatch => async ({ emailAddress, url, userName }, callback) => {
   try {
-    await axios.post('/api/lists/share', { emailAddress, url });
+    await axios.post('/api/lists/share', { emailAddress, url, userName });
     if (callback) {
       callback();
     }

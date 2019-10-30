@@ -4,15 +4,17 @@ import SignIn from '../components/signin.component';
 import { Context } from '../context/AuthContext';
 
 const HomePage = ({ history }) => {
-  const { state, loadUser } = useContext(Context);
+  const { state } = useContext(Context);
 
   useEffect(() => {
-    loadUser(() => history.push('/lists'));
+    if (state.user) {
+      history.push('/lists');
+    }
     // eslint-disable-next-line
-  }, [])
+  }, [state.user])
 
   return (
-    state.user ? <Spinner />
+    state.token ? <Spinner />
       : <SignIn />
   );
 }

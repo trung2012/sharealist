@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Context as ListContext } from '../context/ListContext';
-
+import { Context as listContext } from '../context/ListContext';
 import List from './list.component';
 import ListAdd from './list-add.component';
 import CustomButton from './custom-button.component';
@@ -8,7 +7,7 @@ import ErrorDisplay from './error-display.component';
 import './lists.styles.scss';
 
 const Lists = () => {
-  const { state, getLists } = useContext(ListContext);
+  const { state, getLists } = useContext(listContext);
   const [isAdding, setIsAdding] = useState(false);
 
   useEffect(() => {

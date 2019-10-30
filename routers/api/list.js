@@ -65,14 +65,13 @@ const returnRouter = (io) => {
 
   router.post('/share', (req, res) => {
     try {
-      const { emailAddress, url } = req.body;
+      const { emailAddress, url, userName } = req.body;
       if (!validator.isEmail(emailAddress)) {
         return res.status(400).send('Email is invalid. Please try again');
       }
-      sendSharedListEmail(emailAddress, url);
+      sendSharedListEmail({ emailAddress, url, userName });
       res.status(200).send('Email sent');
     } catch (err) {
-      console.log(err)
       res.status(500).send('Internal Server Error');
     }
 

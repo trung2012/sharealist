@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { Context } from '../context/ListContext';
+import { Context as listContext } from '../context/ListContext';
+import { Context as authContext } from '../context/AuthContext';
 import { withRouter } from 'react-router-dom';
 import Modal from './modal.component';
 import ListEdit from './list-edit.component';
@@ -8,7 +9,8 @@ import { isEmailValid } from '../utils/helper';
 import './list.styles.scss';
 
 const List = ({ _id, name, history }) => {
-  const { deleteList, shareList, } = useContext(Context);
+  const { state: { user } } = useContext(authContext);
+  const { deleteList, shareList } = useContext(listContext);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
@@ -19,11 +21,12 @@ const List = ({ _id, name, history }) => {
     if (!shareModalInput.length === 0 || !isEmailValid(shareModalInput)) {
       alert('Please enter a valid email');
     } else {
-      shareList({ emailAddress: shareModalInput, url: `${window.location.href}/${_id}` }, () => {
+      shareList({ emailAddress: shareModalInput, url: `${window.location.href}/${_id}`, userName: user.name || 'A user' }, () => {
         setShowShareModal(false);
         setShareModalInput('');
-        alert('List shared successfully!');
       });
+
+      alert('List shared successfully!');
     }
   };
 
