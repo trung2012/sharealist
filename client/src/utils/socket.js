@@ -1,5 +1,5 @@
 import socketioClient from 'socket.io-client';
 
-const socket = socketioClient('http://localhost:5000/', { transports: ['websocket'] });
+const socket = socketioClient('/', { transports: ['websocket'] });
 
 export default socket;
