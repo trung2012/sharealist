@@ -73,7 +73,6 @@ const ListDetails = ({ match }) => {
         formData.append('image', file);
       }
 
-      console.log(formData)
       try {
         await axios({
           method: 'post',

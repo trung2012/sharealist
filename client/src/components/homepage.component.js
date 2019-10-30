@@ -12,7 +12,7 @@ const HomePage = ({ history }) => {
   }, [])
 
   return (
-    state.token ? <Spinner />
+    state.user ? <Spinner />
       : <SignIn />
   );
 }
