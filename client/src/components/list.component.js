@@ -3,11 +3,12 @@ import { Context } from '../context/ListContext';
 import { withRouter } from 'react-router-dom';
 import Modal from './modal.component';
 import ListEdit from './list-edit.component';
+import { isEmailValid } from '../utils/helper';
 
 import './list.styles.scss';
 
 const List = ({ _id, name, history }) => {
-  const { deleteList, shareList } = useContext(Context);
+  const { deleteList, shareList, } = useContext(Context);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
@@ -15,13 +16,15 @@ const List = ({ _id, name, history }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleListShare = () => {
-    if (shareModalInput.length === 0) {
-      alert('Please enter an email to share');
+    if (!shareModalInput.length === 0 || !isEmailValid(shareModalInput)) {
+      alert('Please enter a valid email');
+    } else {
+      shareList({ emailAddress: shareModalInput, url: `${window.location.href}/${_id}` }, () => {
+        setShowShareModal(false);
+        setShareModalInput('');
+        alert('List shared successfully!');
+      });
     }
-    shareList({ emailAddress: shareModalInput, url: `${window.location.href}/${_id}` }, () => {
-      setShowShareModal(false);
-      alert('List shared successfully!');
-    });
   };
 
   return (
@@ -56,11 +59,12 @@ const List = ({ _id, name, history }) => {
           <input
             className='share-modal-input'
             name='share'
-            type='text'
+            type='email'
             label='Emails'
             value={shareModalInput}
             onChange={e => setShareModalInput(e.target.value)}
             required
+            autoFocus
           />
         </Modal>
       }
