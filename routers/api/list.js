@@ -1,5 +1,6 @@
 const express = require('express');
 const router = new express.Router();
+const validator = require('validator');
 const auth = require('../../middleware/auth');
 const List = require('../../models/List');
 const Item = require('../../models/Item');
@@ -71,6 +72,7 @@ const returnRouter = (io) => {
       sendSharedListEmail(emailAddress, url);
       res.status(200).send('Email sent');
     } catch (err) {
+      console.log(err)
       res.status(500).send('Internal Server Error');
     }
 

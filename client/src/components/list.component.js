@@ -27,6 +27,17 @@ const List = ({ _id, name, history }) => {
     }
   };
 
+  const modalDismiss = (type) => {
+    if (type === 'delete') {
+      setShowDeleteModal(false);
+    }
+
+    if (type === 'share') {
+      setShowShareModal(false);
+      setShareModalInput('');
+    }
+  }
+
   return (
     <>
       {
@@ -35,7 +46,7 @@ const List = ({ _id, name, history }) => {
         <Modal
           modalTitle='Delete List'
           modalConfirm={() => deleteList(_id)}
-          modalDismiss={() => setShowDeleteModal(false)}
+          modalDismiss={() => modalDismiss('delete')}
           confirmText='Delete'
         >
           <div className='modal-text'>
@@ -50,11 +61,11 @@ const List = ({ _id, name, history }) => {
           className='share'
           modalTitle='Share List'
           modalConfirm={handleListShare}
-          modalDismiss={() => setShowShareModal(false)}
+          modalDismiss={() => modalDismiss('share')}
           confirmText='Share'
         >
           <div className='modal-text'>
-            Please enter the emails you want to share this list with
+            Please enter the email you want to share this list with
           </div>
           <input
             className='share-modal-input'
