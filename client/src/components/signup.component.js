@@ -11,7 +11,7 @@ const SignUp = ({ history }) => {
   const { state, signUp, clearErrorMessage } = useContext(Context);
 
   const [userCredentials, setUserCredentials] = useState({ displayName: '', email: '', password: '', confirmPassword: '' })
-  const [errorMessage, setErrorMessage] = useState(undefined);
+  const [errorMessage, setErrorMessage] = useState(null);
   const { email, password, confirmPassword, displayName } = userCredentials;
 
   const handleChange = event => {
@@ -23,15 +23,15 @@ const SignUp = ({ history }) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      return setErrorMessage('Passwords do not match. Please try again!')
+      return setErrorMessage('Passwords do not match. Please try again!');
     }
-    if (password.length <= 6) {
-      return setErrorMessage('Passwords need to be more than 6 characters long')
+    if (password.length < 8) {
+      return setErrorMessage('Passwords need to be at least 8 characters long');
     }
 
     await signUp({ displayName, email, password });
     if (state.token) {
-      history.push('/lists')
+      history.push('/lists');
     }
   }
 
@@ -92,7 +92,16 @@ const SignUp = ({ history }) => {
           </div>
           <div className='more-options'>
             <span>Already have an account?</span>
-            <span className='register-link' onClick={() => history.push('/signin')}>Sign In</span>
+            <span
+              className='register-link'
+              onClick={() => {
+                history.push('/signin');
+                clearErrorMessage();
+              }
+              }
+            >
+              Sign In
+              </span>
           </div>
         </form>
       </div>

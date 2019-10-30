@@ -57,7 +57,16 @@ const SignIn = ({ history }) => {
           </div>
           <div className='more-options'>
             <span className='no-account'>Don't have an account?</span>
-            <span className='register-link' onClick={() => history.push('/signup')}>Register Now</span>
+            <span
+              className='register-link'
+              onClick={() => {
+                history.push('/signup');
+                clearErrorMessage();
+              }
+              }
+            >
+              Register Now
+              </span>
           </div>
         </form>
       </div>
