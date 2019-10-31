@@ -3,7 +3,7 @@
   flex-direction: column;
 
   .add-item {
-    width: 32%;
+    width: 12rem;
     height: 3.5rem;
     margin-bottom: 1.5rem;
     margin-left: auto;
@@ -22,7 +22,6 @@
 @media screen and (min-width: 600px) {
   .lists-page {
     .add-item {
-      width: 15%;
       margin-bottom: 3rem;
       height: 4rem;
     }
@@ -39,9 +38,10 @@
 @media screen and (min-width: 900px) {
   .lists-page {
     .add-item {
-      width: 12%;
+      width: 17rem;
       margin-bottom: 3rem;
-      height: 4rem;
+      height: 4.5rem;
+      font-size: 90%;
     }
   }
 

@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   border-top: .05rem solid #c0c0c0;
-  border-radius: .3rem;
   padding: 1rem 1rem;
   background-color: #fff;  
 
@@ -51,47 +50,12 @@
 
 @media screen and (min-width: 900px) {
   .list-display-item {
-    display: flex;
-    justify-content: space-between;
-    border-top: .05rem solid #c0c0c0;
-    border-radius: .3rem;
     padding: 1.5rem 1.5rem;
-    background-color: #fff;
-  
-    &:last-child {
-      border-bottom: .05rem solid #c0c0c0;
-    }
-  
-    .delete-list {
-      color: rgb(255, 92, 92);
-    }
-  }
-  
-  .list-display-item__name {
-    display: flex;
-    flex: 1;
-    align-items: center;
   }
   
   .list-name {
     margin-left: 2rem;
-    color: rgb(49, 49, 49);
     font-size: 130%;
   }
-  
-  .share-modal-input {
-    border: none;
-    border-bottom: .1rem solid black;
-    font-size: 120%;
-    width: 80%;
-    align-self: center;
-    margin-bottom: 2rem;
-    padding: 1rem 0 .5rem .5rem;
-  
-    &:focus {
-      outline: none;
-    }
-  }
-  
 }
 

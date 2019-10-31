@@ -44,14 +44,15 @@
   margin-bottom: 2rem;
 }
 
+.modal-confirm,
+.modal-dismiss {
+  width: 35%;
+}
+
 .modal-buttons {
   display: flex;
   justify-content: space-around;
-
-  .custom-button {
-    font-size: 80%;
-    width: 30%;
-  }
+  margin-bottom: 1.5rem;
 
   .modal-confirm {
     background-color: #ff5656;
@@ -90,7 +91,7 @@
   }
 }
 
-@media screen and (min-width: 900px) and (max-height: 600px) {
+@media screen and (min-width: 900px) {
   .modal {
     width: 40%;
   }
@@ -98,7 +99,13 @@
 
 @media screen and (min-width: 1184px) {
   .modal {
-    width: 30%;
+    width: 35%;
+  }
+}
+
+@media screen and (min-width: 1367px) {
+  .modal {
+    width: 28%;
   }
 }
 

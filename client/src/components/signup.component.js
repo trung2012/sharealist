@@ -30,7 +30,7 @@ const SignUp = ({ history }) => {
     }
 
     await signUp({ displayName, email, password });
-    if (state.token) {
+    if (state.user) {
       history.push('/lists');
     }
   }

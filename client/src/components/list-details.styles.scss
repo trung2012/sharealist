@@ -4,8 +4,8 @@
 
   .custom-button {
     display: block;
-    width: 16rem;
-    height: 4rem;
+    width: 12rem;
+    height: 3.5rem;
     margin: 1rem auto 2rem;
   }
 }
@@ -89,6 +89,8 @@
 @media screen and (min-width: 600px) {
   .list-details {
     .custom-button {
+      width: 16rem;
+      height: 4rem;
       margin: 1rem auto 4rem;
     }
   }
