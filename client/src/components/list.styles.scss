@@ -1,12 +1,11 @@
 .list-display-item {
   display: flex;
   justify-content: space-between;
-  border-top: .05rem solid #c0c0c0;
+  border-top: .05rem solid #dddddd;
   padding: 1rem 1rem;
-  background-color: #fff;  
 
   &:last-child {
-    border-bottom: .05rem solid #c0c0c0;
+    border-bottom: .05rem solid #dddddd;
   }
 
   .delete-list {
@@ -43,8 +42,8 @@
 
 @media screen and (min-width: 600px) {
   .list-display-item {
-    border-left: .05rem solid #c0c0c0;
-    border-right: .05rem solid #c0c0c0;
+    border-left: .05rem solid #dddddd;
+    border-right: .05rem solid #dddddd;
   }
 }
 

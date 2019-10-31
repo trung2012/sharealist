@@ -1,7 +1,7 @@
 .list-add-display-item {
   display: flex;
   justify-content: space-between;
-  border: .05rem solid gray;
+  border: .05rem solid #dddddd;
   padding: 1rem 1rem;
   z-index: 1;
 
@@ -42,7 +42,6 @@
   .list-add-display-item {
     display: flex;
     justify-content: space-between;
-    border: .05rem solid gray;
     padding: 1.5rem 1.5rem;
     z-index: 1;
   

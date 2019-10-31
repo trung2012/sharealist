@@ -1,7 +1,7 @@
 .list-edit-display-item {
   display: flex;
   justify-content: space-between;
-  border: .05rem solid gray;
+  border: .05rem solid #dddddd;
   padding: 1rem 1rem;
   z-index: 1;
 
@@ -42,7 +42,7 @@
   .list-edit-display-item {
     display: flex;
     justify-content: space-between;
-    border: .05rem solid gray;
+    border: .05rem solid #dddddd;
     padding: 1.5rem 1.5rem;
     z-index: 1;
   
@@ -69,7 +69,7 @@
   
   .list-edit-input {
     border: none;
-    font-size: 130%;
+    font-size: 125%;
     padding-left: 2rem;
     width: 100%;
     height: 100%;
