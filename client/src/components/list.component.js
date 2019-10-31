@@ -67,19 +67,21 @@ const List = ({ _id, name, history }) => {
           modalDismiss={() => modalDismiss('share')}
           confirmText='Share'
         >
-          <div className='modal-text'>
-            Please enter the email you want to share this list with
+          <div className='modal-sub-content'>
+            <div className='modal-text'>
+              Please enter the email you want to share this list with
+            </div>
+            <input
+              className='share-modal-input'
+              name='share'
+              type='email'
+              label='Emails'
+              value={shareModalInput}
+              onChange={e => setShareModalInput(e.target.value)}
+              required
+              autoFocus
+            />
           </div>
-          <input
-            className='share-modal-input'
-            name='share'
-            type='email'
-            label='Emails'
-            value={shareModalInput}
-            onChange={e => setShareModalInput(e.target.value)}
-            required
-            autoFocus
-          />
         </Modal>
       }
 
