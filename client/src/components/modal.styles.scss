@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: column;
   position: fixed;
+  top: 25%;
+  margin: 0 auto;
   width: 100%;
-  min-height: 25%;
   border: .1rem solid gray;
   box-shadow: .6rem .6rem .9rem gray;
-  border-radius: .5rem;
+  border-radius: .3rem;
   padding: 1rem 1.5rem;
   align-self: center;
   z-index: 1;
@@ -39,8 +40,14 @@
   padding: 0 1rem;
 }
 
+.modal-sub-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto 1rem auto;
+}
+
 .modal-text {
-  align-self: center;
   margin-bottom: 2rem;
 }
 
@@ -52,7 +59,7 @@
 .modal-buttons {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 
   .custom-button {
     background: unset;
@@ -109,6 +116,7 @@
   .modal {
     width: 40%;
   }
+  
 }
 
 @media screen and (min-width: 1184px) {
