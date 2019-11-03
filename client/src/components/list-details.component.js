@@ -10,6 +10,7 @@ import ListItemEdit from './list-item-edit.component';
 import ErrorDisplay from './error-display.component';
 
 import './list-details.styles.scss';
+import Progress from './progress.component';
 
 const ListDetails = ({ match }) => {
   const [list, setList] = useState({ name: '', items: [] });
@@ -17,9 +18,11 @@ const ListDetails = ({ match }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [uploadPercentage, setUploadPercentage] = useState(0);
 
   const fetchData = () => {
     socket.emit('initial_data', match.params.listId);
+    setUploadPercentage(0);
   }
 
   useEffect(() => {
@@ -82,6 +85,13 @@ const ListDetails = ({ match }) => {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
+          },
+          onUploadProgress: progressEvent => {
+            setUploadPercentage(
+              parseInt(
+                Math.round((progressEvent.loaded * 100) / progressEvent.total)
+              )
+            )
           }
         });
       } catch (err) {
@@ -130,6 +140,9 @@ const ListDetails = ({ match }) => {
                 </span>
                 Add Photos
               </label>
+              {
+                uploadPercentage > 0 && <Progress percentage={uploadPercentage} />
+              }
             </div>
             <div className='list-details-photos'>
               {

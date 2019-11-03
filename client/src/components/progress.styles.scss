@@ -1,0 +1,30 @@
+.progress {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+  align-self: center;
+  height: .4rem;
+  width: 80%;
+  border: none;  
+  transition: width 3s ease;
+  
+  &::-webkit-progress-value {
+    background: #0569dbe5;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  progress[value] {
+    width: 40%;   
+  } 
+}
+
+@media screen and (min-width: 1300px) {
+  progress[value] {
+    width: 35%;   
+  } 
+}
