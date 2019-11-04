@@ -11,9 +11,15 @@ progress[value] {
   width: 80%;
   border: none;
   
+  &::-webkit-progress-bar {
+    background-color: white;
+    border-radius: .3rem;
+    box-shadow: 0 .1rem .3rem rgba(0, 0, 0, 0.25) inset;
+  }
+
   &::-webkit-progress-value {
     background: #0569dbe5;
-    transition: width 3s ease;
+    transition: width 1s;
   }
 }
 
