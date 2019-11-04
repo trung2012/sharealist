@@ -9,11 +9,11 @@ progress[value] {
   align-self: center;
   height: .4rem;
   width: 80%;
-  border: none;  
-  transition: width 3s ease;
+  border: none;
   
   &::-webkit-progress-value {
     background: #0569dbe5;
+    transition: width 3s ease;
   }
 }
 
