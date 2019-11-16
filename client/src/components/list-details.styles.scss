@@ -41,7 +41,7 @@
     cursor: pointer;    
     margin: 1rem auto;
     border-radius: 2rem;
-    border: .1rem solid transparent;
+    border: 1px solid transparent;
   }
 }
 
@@ -67,7 +67,7 @@
 .list-image {
   height: 100%;
   width: 100%;
-  border: .1rem solid #c5c5c5;
+  border: 1px solid #c5c5c5;
 }
 
 .delete-image {
@@ -120,7 +120,7 @@
   }
 
   .list-details-item-container { 
-    border: .05rem solid #e0e0e0;  
+    border: .5px solid #e0e0e0;  
     border-radius: .4rem;
     box-shadow: .6rem .6rem .8rem rgb(155, 155, 155);
     width: 70rem;
@@ -154,7 +154,7 @@
       &:hover {
         color: #0569dbe5;
         background-color: #fff;
-        border: .1rem solid #0569dbe5;
+        border: 1px solid #0569dbe5;
       }
     }
   }

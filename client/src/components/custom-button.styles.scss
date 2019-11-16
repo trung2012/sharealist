@@ -7,7 +7,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1285f0', endColorstr='#0d68cf',GradientType=0 ); /* IE6-9 */
   color: #fff;
   text-transform: uppercase;
-  border: .05rem solid #fff;
+  border: 1px solid #fff;
   border-radius: 3rem;
   cursor: pointer;
 
@@ -24,7 +24,7 @@
     &:active {
       color: #0569dbe5;
       background: #fff;
-      border: .05rem solid #0569dbe5;
+      border: 1px solid #0569dbe5;
     }
   }
 }

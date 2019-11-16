@@ -5,7 +5,7 @@
   top: 25%;
   margin: 0 auto;
   width: 100%;
-  border: .1rem solid transparent;
+  border: 1px solid transparent;
   box-shadow: 0 0 1rem rgb(184, 183, 183);
   border-radius: .3rem;
   padding: 1rem 1.5rem;
@@ -71,7 +71,7 @@
     &:active {
       color: #0569dbe5;
       background: #fff;
-      border: .05rem solid #0569dbe5;
+      border: 1px solid #0569dbe5;
     }
   }
 
@@ -81,7 +81,7 @@
     &:hover {
       background-color: white;
       color: #ff5656;
-      border: .1rem solid #ff5656;
+      border: 1px solid #ff5656;
     }
   }
 }
