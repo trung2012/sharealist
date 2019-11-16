@@ -5,8 +5,8 @@
   top: 25%;
   margin: 0 auto;
   width: 100%;
-  border: .1rem solid gray;
-  box-shadow: .6rem .6rem .9rem gray;
+  border: .1rem solid transparent;
+  box-shadow: 0 0 1rem rgb(184, 183, 183);
   border-radius: .3rem;
   padding: 1rem 1.5rem;
   align-self: center;
@@ -19,7 +19,7 @@
   display: flex;
   justify-content: space-between;
   padding: 1rem .5rem;
-  border-bottom: .1rem solid gray;
+  border-bottom: .1rem solid rgb(161, 161, 161);
 }
 
 .overlay {
