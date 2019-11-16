@@ -22,13 +22,13 @@ const ListDetails = ({ match }) => {
 
   const fetchData = () => {
     socket.emit('initial_data', match.params.listId);
-    setUploadPercentage(0);
   }
 
   useEffect(() => {
     fetchData();
     socket.on('data_changed', fetchData);
     socket.on('get_data', ({ list }) => {
+      setUploadPercentage(0);
       setList(list);
     });
 
@@ -89,11 +89,13 @@ const ListDetails = ({ match }) => {
           onUploadProgress: progressEvent => {
             setUploadPercentage(
               parseInt(
-                Math.round((progressEvent.loaded * 100) / progressEvent.total)
+                Math.round((progressEvent.loaded * 90) / progressEvent.total)
               )
-            )
+            );
           }
         });
+
+        setUploadPercentage(100);
       } catch (err) {
         setErrorMessage('Something went wrong. Please reload and try again');
       }

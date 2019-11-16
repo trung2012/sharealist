@@ -3,7 +3,7 @@ A responsive full-stack eCommerce website built with React, Express, Socket.io a
 
 #### Click [here](http://sharealist-co.herokuapp.com) to view a live demo.
 
-![Sharealist Image](https://i.ibb.co/Mg1wFMK/demo.jpg)
+![Sharealist Image](https://i.ibb.co/86qGhSb/demo.jpg)
 
 ### How to use the project: 
 
