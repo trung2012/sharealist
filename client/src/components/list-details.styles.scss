@@ -120,9 +120,9 @@
   }
 
   .list-details-item-container { 
-    border: .5px solid #e0e0e0;  
+    border: 1px solid transparent;  
     border-radius: .4rem;
-    box-shadow: .6rem .6rem .8rem rgb(155, 155, 155);
+    box-shadow: .2rem .2rem 1.5rem #9b9b9b;
     width: 70rem;
     align-self: center;
     background-color: #fff;
