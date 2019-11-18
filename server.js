@@ -88,11 +88,10 @@ io.on('connection', socket => {
   socket.on('delete_image', async _id => {
     try {
       const image = await Image.findById(_id);
-
-      await cloudinary.v2.uploader.destroy(image.public_id);
       await image.remove();
 
       io.sockets.emit('data_changed');
+      await cloudinary.v2.uploader.destroy(image.public_id);
 
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
