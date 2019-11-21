@@ -156,7 +156,7 @@ const ListDetails = ({ match }) => {
                         <>
                           <img src={image.url} alt='' className='list-image' onClick={() => window.open(image.url)} />
                           <span className='delete-image' onClick={() => handleImageDelete(image._id)}>
-                            <i className="fas fa-times-circle"></i>
+                            &#10006;
                           </span>
                         </>
                       }
