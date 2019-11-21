@@ -155,9 +155,9 @@ const ListDetails = ({ match }) => {
                         image.url &&
                         <>
                           <img src={image.url} alt='' className='list-image' onClick={() => window.open(image.url)} />
-                          <span className='delete-image' onClick={() => handleImageDelete(image._id)}>
-                            &#10006;
-                          </span>
+                          <div className='delete-image' onClick={() => handleImageDelete(image._id)}>
+                            <span>&#10006;</span>
+                          </div>
                         </>
                       }
                     </div>

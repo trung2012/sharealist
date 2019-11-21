@@ -71,21 +71,25 @@
 }
 
 .delete-image {
+  font-family: 'Zapf Dingbats';
   display: inline-block;
   position: absolute;
-  top: -7%;
-  right: -7%;
+  top: -5%;
+  right: -5%;
   font-size: 80%;
   background-color: red;
   color: white;  
   padding: .3rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   text-align: center;
   border-radius: 50%;
 
   span {
-    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -93,6 +97,8 @@
   .delete-image {
     top: -5%;
     right: -5%;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
 
