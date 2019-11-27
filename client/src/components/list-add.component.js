@@ -18,6 +18,13 @@ const ListAdd = ({ setIsAdding, history }) => {
     }
   }
 
+  const handleEscape = event => {
+    if (event.key === 'Escape') {
+      setIsAdding(false);
+      setListName('');
+    }
+  }
+
   return (
     <div className='list-add-display-item'>
       <div className='list-add-display-item__name'>
@@ -32,6 +39,7 @@ const ListAdd = ({ setIsAdding, history }) => {
               placeholder='Enter List Name'
               value={listName}
               onChange={e => setListName(e.target.value)}
+              onKeyDown={handleEscape}
               required
               autoFocus
             />

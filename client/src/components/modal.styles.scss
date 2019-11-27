@@ -10,7 +10,7 @@
   border-radius: .3rem;
   padding: 1rem 1.5rem;
   align-self: center;
-  z-index: 1;
+  z-index: 2;
   background: #fff;
   animation: fadeFromTop .3s ease-in-out;
 }
@@ -28,7 +28,8 @@
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: -1;
+  z-index: 1;
+  background-color: rgba(black, .6);
 }
 
 .modal-content {

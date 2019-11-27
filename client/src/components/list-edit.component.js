@@ -19,6 +19,13 @@ const ListEdit = ({ setIsEditing, _id, name }) => {
     }
   }
 
+  const handleEscape = event => {
+    if (event.key === 'Escape') {
+      setIsEditing(false);
+      setListName(name);
+    }
+  }
+
   return (
     <div className='list-edit-display-item'>
       <div className='list-edit-display-item-content'>
@@ -32,6 +39,7 @@ const ListEdit = ({ setIsEditing, _id, name }) => {
               type='text'
               value={listName}
               onChange={e => setListName(e.target.value)}
+              onKeyDown={handleEscape}
               required
               autoFocus
             />
