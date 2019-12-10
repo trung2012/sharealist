@@ -19,15 +19,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <>
-        <Header />
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/lists' component={ListPage} />
-          <Route path='/signup' component={SignUp} />
-          <Redirect to='/' />
-        </Switch>
-      </>
+      <Header />
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route path='/lists' component={ListPage} />
+        <Route path='/signup' component={SignUp} />
+        <Redirect to='/' />
+      </Switch>
     </div>
   );
 }
