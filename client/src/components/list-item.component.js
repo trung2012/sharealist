@@ -2,7 +2,7 @@ import React from 'react';
 
 import './list-item.styles.scss';
 
-const ListItem = ({ item, handleDelete, setIsEditing, setItemToEdit, socket }) => {
+const ListItem = ({ item, handleDelete, setIsEditing, setItemToEdit, socket, listId }) => {
   const { _id, name, quantity, note, completed } = item;
   const completedClass = completed ? 'list-item-name completed' : 'list-item-name';
 
@@ -12,7 +12,7 @@ const ListItem = ({ item, handleDelete, setIsEditing, setItemToEdit, socket }) =
   }
 
   const onItemClick = () => {
-    socket.emit('set_completed', _id);
+    socket.emit('set_completed', { listId, _id });
   }
 
   return (

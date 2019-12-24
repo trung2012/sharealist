@@ -25,6 +25,10 @@ app.use('/api/lists', listRouter);
 io.on('connection', socket => {
   console.log('User Connected');
 
+  socket.on('join', (listId) => {
+    socket.join(listId);
+  })
+
   socket.on('initial_data', async (listId) => {
     try {
       const existingList = await List.findById(listId.toString());
@@ -45,28 +49,28 @@ io.on('connection', socket => {
       const newItem = new Item({ ...item, list: listId });
       await newItem.save();
 
-      io.sockets.emit('data_changed');
+      io.to(listId).emit('data_changed');
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   });
 
-  socket.on('delete_item', async (_id) => {
+  socket.on('delete_item', async ({ listId, _id }) => {
     try {
       const deleted = await Item.findByIdAndDelete(_id);
       if (deleted) {
-        io.sockets.emit('data_changed');
+        io.to(listId).emit('data_changed');
       }
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   });
 
-  socket.on('edit_item', async ({ name, quantity, note, _id }) => {
+  socket.on('edit_item', async ({ listId, name, quantity, note, _id }) => {
     try {
       const updatedItem = await Item.findByIdAndUpdate(_id, { $set: { name, quantity, note } }, { new: true })
       if (updatedItem) {
-        io.sockets.emit('data_changed');
+        io.to(listId).emit('data_changed');
       }
 
     } catch (err) {
@@ -74,29 +78,33 @@ io.on('connection', socket => {
     }
   });
 
-  socket.on('set_completed', async _id => {
+  socket.on('set_completed', async ({ listId, _id }) => {
     try {
       const item = await Item.findById(_id);
       item.completed = !item.completed;
       await item.save();
-      io.sockets.emit('data_changed');
+      io.to(listId).emit('data_changed');
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   });
 
-  socket.on('delete_image', async _id => {
+  socket.on('delete_image', async ({ listId, _id }) => {
     try {
       const image = await Image.findById(_id);
       await image.remove();
 
-      io.sockets.emit('data_changed');
+      io.to(listId).emit('data_changed');
       await cloudinary.v2.uploader.destroy(image.public_id);
 
     } catch (err) {
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   });
+
+  socket.on('leave', (listId) => {
+    socket.leave(listId)
+  })
 
   socket.on('disconnect', () => {
     console.log('User disconnected');

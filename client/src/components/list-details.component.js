@@ -13,6 +13,7 @@ import './list-details.styles.scss';
 import Progress from './progress.component';
 
 const ListDetails = ({ match }) => {
+  console.log('render')
   const [list, setList] = useState({ name: '', items: [] });
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -26,6 +27,7 @@ const ListDetails = ({ match }) => {
 
   useEffect(() => {
     fetchData();
+    socket.emit('join', match.params.listId);
     socket.on('data_changed', fetchData);
     socket.on('get_data', ({ list }) => {
       setUploadPercentage(0);
@@ -37,6 +39,7 @@ const ListDetails = ({ match }) => {
     })
 
     return () => {
+      socket.emit('leave', match.params.listId);
       socket.off('data_changed');
       socket.off('get_data');
       socket.off('new error');
@@ -56,7 +59,7 @@ const ListDetails = ({ match }) => {
   const handleEdit = ({ itemContent, _id }) => {
     if (itemContent.itemName && _id) {
       const { itemName, quantity, note } = itemContent;
-      socket.emit('edit_item', { name: itemName, quantity, note, _id });
+      socket.emit('edit_item', { listId: match.params.listId, name: itemName, quantity, note, _id });
 
       setIsEditing(false);
       setItemToEdit(null);
@@ -64,7 +67,7 @@ const ListDetails = ({ match }) => {
   }
 
   const handleDelete = _id => {
-    socket.emit('delete_item', _id);
+    socket.emit('delete_item', { listId: match.params.listId, _id });
   }
 
   const handleImageUpload = async (event) => {
@@ -103,7 +106,7 @@ const ListDetails = ({ match }) => {
   }
 
   const handleImageDelete = _id => {
-    socket.emit('delete_image', _id);
+    socket.emit('delete_image', { listId: match.params.listId, _id });
   }
 
   return (
@@ -127,6 +130,7 @@ const ListDetails = ({ match }) => {
                       setIsEditing={setIsEditing}
                       setItemToEdit={setItemToEdit}
                       socket={socket}
+                      listId={match.params.listId}
                     />
                   })
                 }
