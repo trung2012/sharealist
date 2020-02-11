@@ -23,7 +23,7 @@ const Header = ({ history }) => {
         {
           user &&
           <>
-            <Link to='/lists' className='navigation-item navigate-to-list'>
+            <Link to='/' className='navigation-item navigate-to-list'>
               My Lists
             </Link>
             <div className='navigation-item navigation-sign-out' onClick={handleSignOut}>

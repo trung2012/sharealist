@@ -8,7 +8,8 @@ import ErrorDisplay from './error-display.component';
 
 import './signin.styles.scss';
 
-const SignIn = ({ history }) => {
+const SignIn = ({ history, location }) => {
+  let { from } = location.state || { from: { pathname: "/" } };
   const { state, signIn, clearErrorMessage } = useContext(Context);
 
   const [userCredentials, setUserCredentials] = useState({ email: '', password: '' })
@@ -23,10 +24,9 @@ const SignIn = ({ history }) => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    await signIn({ email, password });
-    if (state.user) {
-      history.push('/lists');
-    }
+    signIn({ email, password }, () => {
+      history.replace(from);
+    });
   }
 
   return (

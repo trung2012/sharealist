@@ -19,7 +19,7 @@ const SignUp = ({ history }) => {
     setUserCredentials({ ...userCredentials, [name]: value })
   }
 
-  const handleSubmit = async event => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -29,10 +29,9 @@ const SignUp = ({ history }) => {
       return setErrorMessage('Passwords need to be at least 8 characters long');
     }
 
-    await signUp({ displayName, email, password });
-    if (state.user) {
-      history.push('/lists');
-    }
+    signUp({ displayName, email, password }, () => {
+      history.push('/');
+    });
   }
 
   const onFocus = () => {

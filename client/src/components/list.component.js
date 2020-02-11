@@ -89,7 +89,7 @@ const List = ({ _id, name, history }) => {
         isEditing ? <ListEdit setIsEditing={setIsEditing} _id={_id} name={name} />
           :
           <div className='list-display-item'>
-            <div className='list-display-item__name' onClick={() => history.push(`/lists/${_id}`)}>
+            <div className='list-display-item__name' onClick={() => history.push(`/${_id}`)}>
               <span className='list-icon'>
                 <i className="far fa-list-alt"></i>
               </span>

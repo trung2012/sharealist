@@ -40,6 +40,7 @@ io.on('connection', socket => {
       socket.emit('get_data', { list: existingList })
 
     } catch (err) {
+      console.log(err)
       socket.emit('new error', { message: 'Something went wrong with our server' });
     }
   });

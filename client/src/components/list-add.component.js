@@ -13,7 +13,7 @@ const ListAdd = ({ setIsAdding, history }) => {
     if (!listName) {
       alert('Please enter list name');
     } else {
-      addList(listName, (_id) => history.push(`/lists/${_id}`));
+      addList(listName, (_id) => history.push(`/${_id}`));
       setIsAdding(false);
     }
   }

@@ -1,17 +1,10 @@
-import React, { useEffect, useContext } from 'react';
-import { Route } from 'react-router-dom';
-import { Context } from '../context/AuthContext'
+import React from 'react';
+import { Route, useRouteMatch } from 'react-router-dom';
 import Lists from './lists.component';
 import ListDetails from './list-details.component';
 
-const ListPage = ({ match, history }) => {
-  const { state } = useContext(Context);
-
-  useEffect(() => {
-    if (!state.user) {
-      history.push('/')
-    }
-  }, [history, state.user])
+const ListPage = () => {
+  const match = useRouteMatch();
 
   return (
     <>
