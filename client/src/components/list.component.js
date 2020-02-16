@@ -21,7 +21,7 @@ const List = ({ _id, name, history }) => {
     if (!shareModalInput.length === 0 || !isEmailValid(shareModalInput)) {
       alert('Please enter a valid email');
     } else {
-      shareList({ emailAddress: shareModalInput, url: `${window.location.href}/${_id}`, userName: user.name || 'A user' }, () => {
+      shareList({ emailAddress: shareModalInput, url: `${window.location.href}${_id}`, userName: user.name || 'A user' }, () => {
         setShowShareModal(false);
         setShareModalInput('');
       });

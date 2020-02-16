@@ -23,12 +23,12 @@ const App = () => {
     <div className="App">
       <Header />
       <Switch>
-        <PrivateRoute exact path='/'>
-          <Lists />
-        </PrivateRoute>
         <Route path='/signup' component={SignUp} />
         <Route path='/signin' component={SignIn} />
         <Route path={`/:listId`} component={ListDetails} />
+        <PrivateRoute exact path='/'>
+          <Lists />
+        </PrivateRoute>
         <Redirect to='/' />
       </Switch>
     </div>

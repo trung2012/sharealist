@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../context/AuthContext';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useLocation } from 'react-router-dom';
 
 import FormInput from './form-input.component';
 import CustomButton from './custom-button.component';
@@ -8,7 +8,9 @@ import ErrorDisplay from './error-display.component';
 
 import './signin.styles.scss';
 
-const SignIn = ({ history, location }) => {
+const SignIn = ({ history }) => {
+  const location = useLocation();
+  console.log(location.state)
   let { from } = location.state || { from: { pathname: "/" } };
   const { state, signIn, clearErrorMessage } = useContext(Context);
 
